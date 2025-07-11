@@ -16,7 +16,7 @@ A curated collection of guides, configurations, and installation instructions fo
 
 - [Kubernetes Setup Guide](System%20Administrator/Kubernetes/Kubernetes%20Setup%20Guide.md)
 - [Setup Control Plane](System%20Administrator/Kubernetes/Setup%20Control%20Plane.md)
-- [Setup MetalLB](<System Administrator/Kubernetes/Setup MetalLB.md>)
+- [Setup MetalLB](System%20Administrator/Kubernetes/Setup%20MetalLB.md)
 - [Setup Worker Node](System%20Administrator/Kubernetes/Setup%20Worker%20Node.md)
 
 ##### Installation Guide {#kubernetes-installation-guide}
