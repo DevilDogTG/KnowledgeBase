@@ -4,17 +4,17 @@ description: Just note and published
 
 # Enable required plugins (GitHub Pages supported)
 plugins:
-	- jekyll-remote-theme
-	- jekyll-readme-index
+  - jekyll-remote-theme
+  - jekyll-readme-index
 
 # Treat README.md as the site index
 readme_index:
-	enabled: true
+  enabled: true
 
 # Exclude items from the site build
 exclude:
-	- node_modules/
-	- vendor/
-	- Gemfile*
-	- package*.json
-	- README*.md.tmp
+  - node_modules/
+  - vendor/
+  - Gemfile*
+  - package*.json
+  - README*.md.tmp
