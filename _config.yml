@@ -6,6 +6,7 @@ description: Just note and published
 plugins:
   - jekyll-remote-theme
   - jekyll-readme-index
+  - jekyll-optional-front-matter
 
 # Treat README.md as the site index
 readme_index:
@@ -18,3 +19,10 @@ exclude:
   - Gemfile*
   - package*.json
   - README*.md.tmp
+
+# Apply a default layout to all pages so theme styles wrap content
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
