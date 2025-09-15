@@ -33,7 +33,7 @@ html[data-theme="light"] { color-scheme: light; }
 
   :root:not([data-theme="light"]) code,
   :root:not([data-theme="light"]) pre { background: #161b22; color: #c9d1d9; border-color: #30363d; }
-  :root:not([data-theme="light")] pre.highlight { background: #161b22; }
+  :root:not([data-theme="light"]) pre.highlight { background: #161b22; }
 
   :root:not([data-theme="light"]) table { background: #0d1117; border-color: #30363d; }
   :root:not([data-theme="light"]) th,
