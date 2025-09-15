@@ -1,3 +1,47 @@
 <!-- Custom head content: site favicon -->
 <link rel="icon" href="{{ '/dev-dogs.ico' | relative_url }}" type="image/x-icon">
 <link rel="shortcut icon" href="{{ '/dev-dogs.ico' | relative_url }}" type="image/x-icon">
+
+<!-- Theme bootstrapping: set initial theme before paint -->
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+
+      window.__setTheme = function (next) {
+        var t = next || (document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+        document.documentElement.dataset.theme = t;
+        localStorage.setItem('theme', t);
+      };
+
+      // Follow system changes if user hasn't chosen explicitly
+      if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        mq.addEventListener('change', function (e) {
+          if (!localStorage.getItem('theme')) {
+            document.documentElement.dataset.theme = e.matches ? 'dark' : 'light';
+          }
+        });
+      }
+    } catch (e) { /* noop */ }
+  })();
+  // Add a floating theme toggle button
+  document.addEventListener('DOMContentLoaded', function () {
+    try {
+      var btn = document.createElement('button');
+      btn.className = 'theme-toggle';
+      btn.type = 'button';
+      var update = function () {
+        var dark = document.documentElement.dataset.theme === 'dark';
+        btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        btn.textContent = dark ? '☀️' : '🌙';
+      };
+      btn.addEventListener('click', function () { window.__setTheme(); update(); });
+      update();
+      document.body.appendChild(btn);
+    } catch (e) { /* noop */ }
+  });
+  </script>
