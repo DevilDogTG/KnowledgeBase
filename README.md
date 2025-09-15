@@ -95,6 +95,7 @@ A curated collection of guides, configurations, and installation instructions fo
 #### dotNET framework {#dotnet-framework}
 
 - [dotNet Framework Version Check](Developers/dotNET%20framework/dotNet%20Framework%20Version%20Check.md)
+- [Create your NuGet package](Developers/dotNET%20framework/Create-your-nuget-package.md)
 
 #### Postman {#postman}
 
