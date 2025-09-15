@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # IP Address COnfiguration
 
 You can check current IP Address with

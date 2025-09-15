@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :book: Uptime Kuma
 
 ## Pre-requirement

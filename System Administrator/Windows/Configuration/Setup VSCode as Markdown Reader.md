@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Setup VSCode as Markdown Reader
 
 This idea has been create base on my setup using note everthing in `Markdown` format like a Knowledge Base, my problem start with need to read by default than editting, and annoy if I need to press `Ctrl+Shift+V` everytime to preview it in pretty format

@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Setup `minikube` on WSL2
 
 Minikube is a tool that allows you to run a local Kubernetes cluster on your development machine. Setting up Minikube on WSL2 (Windows Subsystem for Linux 2) involves several steps, including enabling necessary features, installing dependencies, and configuring Minikube.

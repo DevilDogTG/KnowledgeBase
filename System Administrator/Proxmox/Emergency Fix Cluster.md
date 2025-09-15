@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Emergency Fix Cluster
 
 **IMPORTANT:** don't do anything else on the nodes while doing the following steps, you are disabling safety checks that prevent bad things from happening!

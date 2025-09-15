@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :book: SFTPGo
 
 SFTPGo is an event-driven file transfer solution. It support multiple protocols (SFTP, SCP, FTP/S, WebDAV, HTTP/S) and multiple storage backends.

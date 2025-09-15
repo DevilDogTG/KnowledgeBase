@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Create your nuget package
 
 This is simple guide to setup and create basic package to upload to nuget.org, in other server type please read server document to integrate it.

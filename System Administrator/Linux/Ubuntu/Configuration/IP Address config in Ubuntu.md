@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :gear: IP Address config in Ubuntu
 
 This is very simple task on Ubuntu, but I don’t know how to change or fix IP address. This article will help you do it.

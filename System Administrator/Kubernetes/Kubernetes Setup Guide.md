@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Kubernetes Setup Guide
 
 This guide refer <https://kubernetes.io/docs/setup/production-environment/> to setup production-like environment in home lab

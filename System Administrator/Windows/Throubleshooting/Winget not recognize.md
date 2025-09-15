@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :adhesive_bandage: Fix `winget` not recognize
 
 Try to re-install the stable release of WinGet on Windows follow these steps from a Windows PowerShell command prompt:

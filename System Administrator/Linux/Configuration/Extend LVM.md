@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # How to extend LVM in Linux
 
 Extending a Logical Volume Manager (LVM) in Linux involves adding more space to an existing logical volume. Follow these steps to extend your LVM:

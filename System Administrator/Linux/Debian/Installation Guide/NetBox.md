@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :book: NetBox: IPAM Tool
 
 NetBox required `PostgreSQL` and `Redis` as dependency this guide will skip installation process for it.

@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :book: `newman` Testing cli for postman
 
 To use postman as an automate testing and building the report for test result.

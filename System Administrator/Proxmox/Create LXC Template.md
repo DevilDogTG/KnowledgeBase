@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Create the LXC template
 
 In order to turn the container into a template, we need to delete the network interface then create a backup.

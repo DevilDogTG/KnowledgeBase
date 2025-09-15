@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Setup `watch` alias command in `Powershell`
 
 `watch` command is very helpful to monitor can using with any command in linux, Unfortunately in windows we doesn't have this command. This guide will try to create custom function to use `watch` in `powershell`

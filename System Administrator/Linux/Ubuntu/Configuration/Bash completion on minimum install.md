@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :gear: Bash completion on minimum install
 
 When you install Ubuntu as minimal require. They lack some utility that we commonly used like command auto completed.

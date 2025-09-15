@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :book: Redis
 
 Redis server is key-value database. This guide will install on Debian 12

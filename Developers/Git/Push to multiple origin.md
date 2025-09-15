@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Setup Git push to multiple URLs with same origin
 
 To push changes to multiple origins, you need to configure multiple push URLs.

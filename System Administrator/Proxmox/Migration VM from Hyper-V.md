@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Migration VM from Hyper-V system
 
 ## Disk Converting

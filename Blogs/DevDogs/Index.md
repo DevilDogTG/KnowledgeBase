@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Blogs Index
 
 A categorized index of all blog posts and articles under the `DevDogs` blog.

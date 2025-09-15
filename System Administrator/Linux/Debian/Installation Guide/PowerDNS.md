@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # 📖 PowerDNS
 
 ## Setup repositories & Install

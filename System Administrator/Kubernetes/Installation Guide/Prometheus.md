@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :wrench: Setup Prometheus on Kubernetes
 
 This guide will be example to install Prometheus on kubernetes cluster that place data on NFS

@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :wrench: Setup `powershell` `git` completetion
 
 posh-git is a PowerShell module that integrates Git and PowerShell by providing Git status summary information that can be displayed in the PowerShell prompt

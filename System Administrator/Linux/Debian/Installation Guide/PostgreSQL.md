@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # 📖 PostgreSQL
 
 This guide will instruction how to install PostgreSQL for newbie

@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Setup ZFS ARC Limit
 
 Adaptive Replacement Cache  (ARC) is used to improve IO performance, But this can reserved a lot of system memory, maybe reserve to 80% of your Proxmox system

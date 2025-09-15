@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :wrench: Setup `Powershell` autocomplation
 
 Truely, I like shell completion of Linux terminal. It easy to find or guide something and make life easier with CLI

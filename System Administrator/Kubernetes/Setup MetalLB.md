@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Setup MetalLB for load balancer
 
 [MetalLB](https://metallb.io/) is a load-balancer implementation for bare metal Kubernetes clusters, using standard routing protocols.

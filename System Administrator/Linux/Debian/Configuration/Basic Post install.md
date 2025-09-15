@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Debian post install configuration
 
 After installed debian. this recommended to setup

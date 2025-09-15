@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Create a self-signed certificate with your own root CA
 
 For internal use within local labs and company self-signed certificate can be used, but it will be marked as insecure. This blog will guide you to use self-signed certificate for internal use without marked with insecure.

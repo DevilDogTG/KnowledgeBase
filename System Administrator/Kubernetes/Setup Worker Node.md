@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :gear: Kubernetes Worker setup
 
 This guide has pre-required from [Kuberbnetes Setup Guide](Kubernetes%20Setup%20Guide.md) please completed it before follow this guide

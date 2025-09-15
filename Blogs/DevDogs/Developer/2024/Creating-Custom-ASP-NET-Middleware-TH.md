@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # ทำ Custom AspNet Middleware ใช้เอง
 
 Middleware มองง่ายๆ มันคือ script/program ของเราตัวนึง ที่แทรกอยู่ตรงกลางเวลามีการเรียก Request มาที่แอพพลิเคชั่นเรา ถ้ามองเป็นรูปจะประมาณนี้

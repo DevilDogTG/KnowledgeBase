@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :book: Monit
 
 Monit is an open-source monitoring tool for Linux.

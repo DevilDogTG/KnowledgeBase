@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Move `recovery partition` in Windows
 
 Basically, here are the steps:

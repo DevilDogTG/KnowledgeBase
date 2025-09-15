@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :book: SQL Server 2022 on Ubuntu 22.04
 
 > This guide will walkthrough installation guide from Microsoft and not include step to install and config Ubuntu

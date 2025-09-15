@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # .Net Framework Version Check
 
 Use following command to check installed versions of .NET framework on windows system

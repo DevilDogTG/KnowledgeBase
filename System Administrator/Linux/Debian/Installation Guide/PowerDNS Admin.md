@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :book: PowerDNS Admin
 
 Web Interface for PowerDNS easier to manage your PowerDNS server

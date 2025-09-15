@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # 📖 pgAdmin 4: PostgreSQL Web Admin
 
 `pgAdmin4` will help to manage `PostgreSQL` server easier, in this guide will install as web admin

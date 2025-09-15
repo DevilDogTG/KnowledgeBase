@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Creating Custom ASP.NET Middleware: A Step-by-Step Guide
 
 Middleware in ASP.NET Core acts as a pipeline through which every HTTP request passes before reaching your application’s core logic. Think of it as a series of gates or filters that process incoming requests and outgoing responses.

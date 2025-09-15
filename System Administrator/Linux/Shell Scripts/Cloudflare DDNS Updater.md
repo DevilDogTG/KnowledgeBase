@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Cloudflare DDNS Updater via shell scrript
 
 ref: [https://dev.to/ordigital/cloudflare-ddns-on-linux-4p0d](Referrence)

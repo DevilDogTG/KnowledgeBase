@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # :wrench: POST install configuration
 
 After installed debian. this recommend to setup
