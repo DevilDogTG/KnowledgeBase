@@ -1,0 +1,28 @@
+---
+---
+@import "jekyll-theme-modernist";
+
+/* Honor user's color scheme preference */
+:root { color-scheme: light dark; }
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  html, body { background-color: #0d1117; color: #c9d1d9; }
+  a { color: #58a6ff; }
+  a:visited { color: #8ab4f8; }
+
+  header, .site-header, .page-header, .site-nav, nav,
+  footer, .site-footer { background: #0b1220; border-color: #30363d; }
+  .site-title, .site-description { color: #c9d1d9; }
+
+  h1, h2, h3, h4, h5, h6 { color: #e6edf3; }
+
+  code, pre { background: #161b22; color: #c9d1d9; border-color: #30363d; }
+  pre.highlight { background: #161b22; }
+
+  table { background: #0d1117; border-color: #30363d; }
+  th, td { border-color: #30363d; }
+
+  blockquote { color: #a6b3c3; border-left-color: #30363d; }
+  hr { border-color: #30363d; }
+}
