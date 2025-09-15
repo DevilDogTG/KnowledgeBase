@@ -112,6 +112,7 @@ Use our **Topic Suggestion System** to generate personalized article and blog to
 ```
 
 The system analyzes your current content and suggests relevant topics in:
+
 - **System Administration** (Infrastructure, DevOps, Cloud)
 - **Development** (.NET/C#, DevOps tools, APIs)
 - **Blog Topics** (HomeLabs, Personal Stories, Technical Journeys)
