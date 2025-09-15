@@ -7,10 +7,16 @@ plugins:
   - jekyll-remote-theme
   - jekyll-readme-index
   - jekyll-optional-front-matter
+  - jekyll-relative-links
 
 # Treat README.md as the site index
 readme_index:
   enabled: true
+
+# Rewrite local .md links to .html so site links work
+relative_links:
+  enabled: true
+  collections: true
 
 # Exclude items from the site build
 exclude:
