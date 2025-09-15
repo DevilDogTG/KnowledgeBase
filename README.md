@@ -102,23 +102,4 @@ A curated collection of guides, configurations, and installation instructions fo
 - [Newman Automate Testing](Developers/Postman/Newman%20Automate%20Testing.md)
 
 ---
-
-## 🚀 Looking for New Content Ideas?
-
-Use our **Topic Suggestion System** to generate personalized article and blog topic suggestions based on your existing content and current technology trends:
-
-```bash
-./tools/generate-suggestions.sh
-```
-
-The system analyzes your current content and suggests relevant topics in:
-
-- **System Administration** (Infrastructure, DevOps, Cloud)
-- **Development** (.NET/C#, DevOps tools, APIs)
-- **Blog Topics** (HomeLabs, Personal Stories, Technical Journeys)
-- **Trending Topics** (AI/ML, Edge Computing, Sustainability)
-
-📖 **[Read the full documentation](tools/TOPIC-SUGGESTIONS.md)** for advanced usage and customization options.
-
----
 > For blog content, see [Blogs/DevDogs/Index.md](Blogs/DevDogs/Index.md).
