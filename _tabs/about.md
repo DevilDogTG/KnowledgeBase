@@ -1,4 +1,9 @@
-# Hi, I’m DevilDogTG 👋
+---
+# the default layout is 'page'
+title: Hi, I’m DevilDogTG 👋
+icon: fas fa-info-circle
+order: 4
+---
 
 A software engineer who mainly works with **C# and .NET technologies**.  
 This blog is my personal space to **capture experiences, notes, and knowledge** — a kind of journey log to remember what I’ve learned and done before.

@@ -1,7 +1,10 @@
 ---
-layout: default
+title: "Create your nuget package"
+author: DevilDogTG
+date: 2025-09-15 08:00:00 +0700
+categories: [Developers, .NET]
+tags: [tutorials, c#, nuget] # TAG names should always be lowercase
 ---
-# Create your nuget package
 
 This is simple guide to setup and create basic package to upload to nuget.org, in other server type please read server document to integrate it.
 
@@ -13,7 +16,7 @@ after downloaded. Placed executable to path as your need and add folder to your 
 
 Example: `C:\Nuget\Directory\Path`
 
-```ps1
+```powershell
 # Added folder to PATH
 $env:PATH += ";C:\Nuget\Directory\Path"
 ```
@@ -22,7 +25,7 @@ Then re-open your terminal to reload environment (or re-login Windows).
 
 try to check working version by `nuget help` command, you will see nuget response if success
 
-```ps1
+```powershell
 NuGet Version: 6.14.0.116
 usage: NuGet <command> [args] [options]
 Type 'NuGet help <command>' for help on a specific command.
@@ -32,15 +35,15 @@ Type 'NuGet help <command>' for help on a specific command.
 
 Go to website [Nuget], log-in to your account and go to `API Keys` menu
 
-![API Keys Menu](assets/nuget-api-keys-menu.png)
+![API Keys Menu](../assets/contents/2025/create-nuget/nuget-api-keys-menu.png)
 
 Select key name, expires time and scope as you need, you can specified `Glob Pattern` to `*` for manager all packages.
 
-![Create API Key](assets/nuget-create-api-key.png)
+![Create API Key](../assets/contents/2025/create-nuget/nuget-create-api-key.png)
 
 after created your can copy your api key here
 
-![Copy Key](assets/nuget-key-copy.png)
+![Copy Key](../assets/contents/2025/create-nuget/nuget-key-copy.png)
 
 ## Configure your api key on local
 
@@ -48,7 +51,7 @@ After preparation process. Before upload your package to NuGet server you need t
 
 Check your current source
 
-```ps1
+```powershell
 nuget sources list
 ## Registered Sources:
 ##   1.  nuget.org [Enabled]
@@ -57,7 +60,7 @@ nuget sources list
 
 to configure api key for nuget.org using
 
-```ps1
+```powershell
 nuget setapikey <your-api-key> -source https://api.nuget.org/v3/index.json
 ```
 
@@ -65,13 +68,13 @@ nuget setapikey <your-api-key> -source https://api.nuget.org/v3/index.json
 
 Try to publishing your package, First you need to publish project type `Class Library` and run command to pack nuget package (please setup package information in .csproj property before pack)
 
-```ps1
+```powershell
 dotnet pack <project-file.csproj> --configuration [Debug/Release] --output "directory\path"
 ```
 
 after run, you will get `.nupkg` file contain your library, you can use this file upload directly to nuget.org to list item
 
-```ps1
+```powershell
 nuget push "directory\path\project-name-<version>.nupkg" --source https://api.nuget.org/v3/index.json
 ```
 
