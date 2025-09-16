@@ -206,6 +206,7 @@ compress_html:
     envs: [development]
 
 exclude:
+  - Backup
   - "*.gem"
   - "*.gemspec"
   - docs

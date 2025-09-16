@@ -2,6 +2,35 @@
 
 Self knowledge and self learning will stored here
 
+## Development
+
+Check dependencies has installed
+
+```ps1
+ruby -v
+gem -v
+bundle -v
+jekyll -v
+```
+
+### First time install
+
+```ps1
+gem install bundler
+# Install gems for this project (kept local to the repo)
+bundle config set path vendor/bundle
+bundle install
+```
+
+### Run
+
+```ps1
+bundle exec jekyll serve --livereload
+
+# Clean and run
+bundle exec jekyll clean && bundle exec jekyll serve --livereload
+```
+
 ## Index
 
 A curated collection of guides, configurations, and installation instructions for system administration and development tasks.
