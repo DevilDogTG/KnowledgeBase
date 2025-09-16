@@ -91,6 +91,6 @@ Let's fun
 
 ## URLs definitions
 
-[NuGet]: http://www.nuget.org
+[NuGet]: https://www.nuget.org
 [NuGet download]: https://www.nuget.org/downloads
 [NuGet Latest]: https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
