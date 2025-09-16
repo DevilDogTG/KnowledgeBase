@@ -12,10 +12,6 @@
 #   noblank: true
 # Uncomment and complete the url below to enable more contact options
 
-- type: wakapi
-  icon: "fa-solid fa-hourglass-start"
-  url: "https://wakapi.dev/summary?interval=last_7_days"
-
 - type: linkedin
   icon: "fab fa-linkedin" # icons powered by <https://fontawesome.com/>
   url: "https://www.linkedin.com/in/supawat-tanmanee-48191637/"

@@ -18,4 +18,4 @@ Outside of work, I’m someone who:
 - 🐶 Is seriously in love with dogs
 
 At its heart, this blog is a mix of **DevDogs adventures in the development world** and everyday stories.  
-Thanks for dropping by — hope you enjoy the ride!
+Thanks for dropping by — hope you enjoy the life!
