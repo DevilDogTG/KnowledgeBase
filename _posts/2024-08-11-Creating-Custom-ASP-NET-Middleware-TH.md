@@ -74,3 +74,5 @@ public class Startup
 ซึ่งถ้ามีมากกว่า 1 ตัว เราเรียก `app.UseMiddleware<ชื่อ Middleware>();` ต่อไปได้เรื่อยๆเลยครับ
 
 เป้นเพียงตัวอย่างง่ายๆ ลองนำไปประยุกต์ใช้กันดูครับ
+
+English version: [Click here](./2024-08-13-Creating-Custom-ASP-NET-Middleware-EN.md)
