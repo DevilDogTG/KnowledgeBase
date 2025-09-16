@@ -1,0 +1,34 @@
+remote_theme: pages-themes/modernist@v0.2.0
+title: DevDogs
+description: Just note and published
+
+# Enable required plugins (GitHub Pages supported)
+plugins:
+  - jekyll-remote-theme
+  - jekyll-readme-index
+  - jekyll-optional-front-matter
+  - jekyll-relative-links
+
+# Treat README.md as the site index
+readme_index:
+  enabled: true
+
+# Rewrite local .md links to .html so site links work
+relative_links:
+  enabled: true
+  collections: true
+
+# Exclude items from the site build
+exclude:
+  - node_modules/
+  - vendor/
+  - Gemfile*
+  - package*.json
+  - README*.md.tmp
+
+# Apply a default layout to all pages so theme styles wrap content
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
