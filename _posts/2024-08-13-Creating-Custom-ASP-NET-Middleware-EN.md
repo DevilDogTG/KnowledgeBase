@@ -76,4 +76,4 @@ Middleware can be stacked, allowing for multiple pieces to be executed in sequen
 
 This example demonstrates the basics of custom middleware. From here, you can expand the functionality to suit various needs, such as authentication, error handling, or data logging. Remember, effective middleware can greatly enhance your application, but always be mindful of performance implications.
 
-Read in Thai: [Click here](./2024-08-11-Creating-Custom-ASP-NET-Middleware-TH.md)
+Read in Thai: [Click here]({% post_url 2024-08-11-Creating-Custom-ASP-NET-Middleware-TH %})

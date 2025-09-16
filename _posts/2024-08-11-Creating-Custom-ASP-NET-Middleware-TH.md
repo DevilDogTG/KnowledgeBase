@@ -75,4 +75,4 @@ public class Startup
 
 เป้นเพียงตัวอย่างง่ายๆ ลองนำไปประยุกต์ใช้กันดูครับ
 
-English version: [Click here](./2024-08-13-Creating-Custom-ASP-NET-Middleware-EN.md)
+English version: [Click here]({% post_url 2024-08-13-Creating-Custom-ASP-NET-Middleware-EN %})
