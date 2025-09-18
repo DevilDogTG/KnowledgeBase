@@ -6,7 +6,7 @@ categories: [Linux, Configuration]
 tags: [tutorials, linux, debian, ภาษาไทย] # TAG names should always be lowercase
 ---
 
-หลังทำการติดตั้ง `Debain` แบบพื้นฐาน, แนะนำให้ตั้งค่าเพิ่มเติม (ตัวเลือก)
+หลังทำการติดตั้ง `Debian` แบบพื้นฐาน, แนะนำให้ตั้งค่าเพิ่มเติม (ตัวเลือก)
 
 ## หลีกเลี่ยงการใช้ `root` user
 
