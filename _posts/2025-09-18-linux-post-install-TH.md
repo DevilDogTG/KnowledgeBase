@@ -61,7 +61,7 @@ sudo nano /etc/ssh/sshd_config
 
 # ให้ uncomment PermitRootLogin แล้วปรับการตั้งค่าเป็น no หรือเพิ่มบรรทัดข้างล่างนี้
 PermitRootLogin no
-# อนุญาตเฉพาะการใช้งานหน้าเครื่อง โดยการเพิ่มPermitRootLogin no
+# อนุญาตเฉพาะการใช้งานหน้าเครื่อง โดยการเพิ่ม PermitRootLogin no
 Match Address 127.0.0.1
   PermitRootLogin yes
 
