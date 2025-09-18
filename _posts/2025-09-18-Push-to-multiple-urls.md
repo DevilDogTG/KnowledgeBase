@@ -3,7 +3,7 @@ title: Setup Git push to multiple URLs with same origin
 author: DevilDogTG
 date: 2025-09-16 09:09:00 +0700
 categories: [Developers, Git]
-tags: [tutorials, c#, nuget] # TAG names should always be lowercase
+tags: [tutorials, git, version-control, push] # TAG names should always be lowercase
 ---
 
 To push changes to multiple origins, you need to configure multiple push URLs.
