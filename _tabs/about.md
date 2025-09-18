@@ -5,6 +5,9 @@ icon: fas fa-info-circle
 order: 4
 ---
 
+![Last 30 days](https://wakapi.dev/api/badge/DevilDogTG/DevilDogTG/interval:30_days?label=Last%2030%20days)
+![Last 30 days](https://wakapi.dev/api/badge/DevilDogTG/DevilDogTG/interval:7_days?label=Last%207%20days)
+
 A software engineer who mainly works with **C# and .NET technologies**.  
 This blog is my personal space to **capture experiences, notes, and knowledge** — a kind of journey log to remember what I’ve learned and done before.
 
