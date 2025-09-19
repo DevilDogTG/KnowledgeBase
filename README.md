@@ -4,35 +4,63 @@
 
 Welcome to my personal knowledge base! This space is powered by Jekyll and serves as a collection of notes, tutorials, and resources for development, system administration, and more.
 
-## 🚀 Getting Started
+## 🚀 Getting Started: Run Locally
 
-### Run Locally
+### Preparing Environment (Windows)
 
-To run the site locally with live reload:
+Install `Ruby`, In this case I'm using `3.1.7` on Windows
 
-```sh
-./tools/run.sh
+Download: [RubyInstaller](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.1.7-1/rubyinstaller-devkit-3.1.7-1-x64.exe)
+
+After installation wizard completed, run `ridk install` and choose `MSYS2 base + dev toolchain`
+
+Reopen your terminal
+
+```powershell
+. $PROFILE
 ```
 
-To build the site for production:
+> ⚠️ If command to reload terminal profile is not work, try to re-login your windows
 
-```sh
-./tools/test.sh
+Check version installed
+
+```powershell
+ruby -v
+gem -v
 ```
 
-Make sure you have Ruby and Bundler installed. Install dependencies with:
+Install `bundler` after install 
 
-```sh
+```powershell
+gem install bundler
+# Check bundle version
+bundle -v
+```
+
+### Install dependencies
+
+If you need to install dependencies packages in local folder, run this command:
+
+```powershell
+# Install gems for this project (kept local to the repo)
+bundle config set path vendor/bundle
+```
+
+Then to install required packages, simple to run
+
+```powershell
 bundle install
 ```
 
-### Testing
+### Run
 
-Run the following to test your Jekyll site locally:
+Run it on local system
 
-```sh
-./tools/test.sh
+```powershell
+bundle exec jekyll clean && bundle exec jekyll serve --livereload
 ```
+
+`--livereload` will help local site keep updating when you editted files.
 
 ## 🛠️ GitHub Actions
 
@@ -46,9 +74,8 @@ See `.github/workflows/` for workflow details.
 
 ## 🙏 Special Thanks
 
-- **Jekyll**: Static site generator
-- **Chirpy Theme**: Beautiful Jekyll theme
-- **GitHub**: Hosting and CI/CD platform
-- **Wakapi**: Coding activity tracking
-- All contributors and open-source projects that make this possible!
-
+- **[Jekyll](https://jekyllrb.com/)**: Static site generator
+- **[Chirpy Theme](https://chirpy.cotes.page/)**: Beautiful Jekyll theme
+- **[GitHub](https://github.com/)**: Hosting and CI/CD platform
+- **[Wakapi](https://wakapi.dev/)**: Coding activity tracking
+- All open-source projects that make this possible!
