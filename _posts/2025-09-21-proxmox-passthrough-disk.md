@@ -46,6 +46,6 @@ After assigning the disk to the VM, you will see the disk in the `Hardware` sect
 
 ![Disk List](../assets/contents/2025/proxmox/passthrough-disk/disk-backup-false.png)
 
-(Optional) Mostly, I will disabled backup for physical disk (due to private reason) by uncheck `backup` option
+(Optional) Most of the time, I disable backup for the physical disk (for personal reasons) by unchecking the `backup` option
 
 ![Backup option](../assets/contents/2025/proxmox/passthrough-disk/backup-option.png)
