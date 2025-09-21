@@ -2,7 +2,7 @@
 title: Passthrough physical disk to VM
 author: DevilDogTG
 date: 2025-09-21 20:53:00 +0700
-categories: [Promox, Configuration]
+categories: [Proxmox, Configuration]
 tags: [tutorials, proxmox]
 ---
 
