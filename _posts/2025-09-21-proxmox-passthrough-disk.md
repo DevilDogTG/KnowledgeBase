@@ -13,7 +13,7 @@ This guide will passthrough physical disk(s) into virtual machine and use it lik
 
 ## List the physical disks
 
-In our case we will use hdd-id to identical disk, using `lsblk` to list your disks installed in proxmox host
+In our case we will use hdd-id to identify disk, using `lsblk` to list your disks installed in proxmox host
 
 ```shell
 find /dev/disk/by-id/ -type l|xargs -I{} ls -l {}|grep -v -E '[0-9]$' |sort -k11|cut -d' ' -f9,10,11,12
