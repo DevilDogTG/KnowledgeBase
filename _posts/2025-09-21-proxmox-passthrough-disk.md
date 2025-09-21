@@ -19,7 +19,7 @@ In our case, we will use disk-id to identify disks, using `lsblk` to list your d
 find /dev/disk/by-id/ -type l|xargs -I{} ls -l {}|grep -v -E '[0-9]$' |sort -k11|cut -d' ' -f9,10,11,12
 ```
 
-Will get output like 
+You will get output like:
 
 ```shell
 /dev/disk/by-id/ata-ST8000DM004-2CX188_ZCT1DNY1 -> ../../sda
