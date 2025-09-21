@@ -32,7 +32,7 @@ Will get output like
 
 ## Assign disk to VM
 
-After note your disk by-id from previous step, just assign it to your virtual machine
+After noting your disk by-id from previous step, just assign it to your virtual machine
 
 ```shell
 qm set [vmid] -scsi[0] /dev/disk/by-id/wwn-0x5000c500661eeebd
