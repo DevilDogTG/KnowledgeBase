@@ -38,7 +38,7 @@ After noting your disk by-id from previous step, just assign it to your virtual 
 qm set [vmid] -scsi[0] /dev/disk/by-id/wwn-0x5000c500661eeebd
 ```
 
-> Replace your [vmid] as your VM and [0] replace by running number of `scsi` on your VM (start with 0)
+> Replace [vmid] with your VM ID and replace [0] with the running number of `scsi` on your VM (starting with 0)
 
 ## Check result
 
