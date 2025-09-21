@@ -42,7 +42,7 @@ qm set [vmid] -scsi[0] /dev/disk/by-id/wwn-0x5000c500661eeebd
 
 ## Check result
 
-after assign disk to VM, you will see disk in `Hardware`
+After assigning the disk to the VM, you will see the disk in the `Hardware` section.
 
 ![Disk List](../assets/contents/2025/proxmox/passthrough-disk/disk-backup-false.png)
 
