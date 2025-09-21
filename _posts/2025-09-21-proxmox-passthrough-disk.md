@@ -8,7 +8,7 @@ tags: [tutorials, proxmox]
 
 This guide will passthrough physical disk(s) into virtual machine and use it like normal disk
 
-> This guide is use partial content from original to summarize as my understand and remember
+> This guide uses partial content from the original, summarized based on my understanding and for reference
 > **Source:** [Proxmox Wiki](https://pve.proxmox.com/wiki/Passthrough_Physical_Disk_to_Virtual_Machine_(VM))
 
 ## List the physical disks
