@@ -20,7 +20,7 @@ Reopen your terminal
 . $PROFILE
 ```
 
-> ⚠️ If command to reload terminal profile is not work, try to re-login your windows
+> ⚠️ If command to reload terminal profile does not work, try to re-login your windows
 
 Check version installed
 
@@ -29,7 +29,7 @@ ruby -v
 gem -v
 ```
 
-Install `bundler` after install 
+Install `bundler` after installing Ruby 
 
 ```powershell
 gem install bundler
@@ -46,7 +46,7 @@ If you need to install dependencies packages in local folder, run this command:
 bundle config set path vendor/bundle
 ```
 
-Then to install required packages, simple to run
+Then to install required packages, simply run
 
 ```powershell
 bundle install
@@ -60,7 +60,7 @@ Run it on local system
 bundle exec jekyll clean && bundle exec jekyll serve --livereload
 ```
 
-`--livereload` will help local site keep updating when you editted files.
+`--livereload` will help local site keep updating when you edited files.
 
 ## 🛠️ GitHub Actions
 
