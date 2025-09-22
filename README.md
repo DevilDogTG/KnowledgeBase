@@ -8,7 +8,7 @@ Welcome to my personal knowledge base! This space is powered by Jekyll and serve
 
 ### Preparing Environment (Windows)
 
-Install `Ruby`, In this case I'm using `3.1.7` on Windows
+Install `Ruby`. In this case I'm using `3.1.7` on Windows
 
 Download: [RubyInstaller](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.1.7-1/rubyinstaller-devkit-3.1.7-1-x64.exe)
 
@@ -20,7 +20,7 @@ Reopen your terminal
 . $PROFILE
 ```
 
-> ⚠️ If command to reload terminal profile does not work, try to re-login your windows
+> ⚠️ If command to reload terminal profile does not work, try to re-login to your windows
 
 Check version installed
 
@@ -29,7 +29,7 @@ ruby -v
 gem -v
 ```
 
-Install `bundler` after installing Ruby 
+Install `bundler` after installing Ruby
 
 ```powershell
 gem install bundler
@@ -39,7 +39,7 @@ bundle -v
 
 ### Install dependencies
 
-If you need to install dependencies packages in local folder, run this command:
+If you need to install packages in local folder, run this command:
 
 ```powershell
 # Install gems for this project (kept local to the repo)
