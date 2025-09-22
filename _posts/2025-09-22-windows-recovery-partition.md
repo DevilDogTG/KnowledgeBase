@@ -111,11 +111,11 @@ set id=27
 
 ### Set WinRE to new image
 
-Disable current `WinRE` and set new WinRE image
+The following commands will disable the current WinRE, set the recovery image path to the new location, and then re-enable WinRE:
 
 ```powershell
 reagentc /disable
-# set the image
+# Set the recovery image path for WinRE to the new location
 reagentc /setreimage /path R:\Recovery\WindowsRE\
 # Re-enable the WinRE environment
 reagentc /enable

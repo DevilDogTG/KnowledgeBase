@@ -35,10 +35,10 @@ You will get output like:
 After noting your disk by-id from previous step, just assign it to your virtual machine
 
 ```shell
-qm set [vmid] -scsi[0] /dev/disk/by-id/wwn-0x5000c500661eeebd
+qm set <vmid> -scsi<scsi_number> /dev/disk/by-id/wwn-0x5000c500661eeebd
 ```
 
-> Replace [vmid] with your VM ID and replace [0] with the running number of `scsi` on your VM (starting with 0)
+> Replace `<vmid>` with your VM ID and `<scsi_number>` with the running number of `scsi` on your VM (starting with 0)
 
 ## Check result
 
