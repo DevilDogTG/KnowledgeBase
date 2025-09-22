@@ -6,26 +6,26 @@ categories: [Windows, Configuration]
 tags: [tutorials, windows, partitions]
 ---
 
-By default, Windows will installed with recovery partition mostly at last partition on disk
+By default, Windows is installed with a recovery partition, mostly at the last partition on disk.
 
-When you need to shrink or expend your disk, you will stuck with recovery partition cannot be moved.
+When you need to shrink or expand your disk, you will be stuck with a recovery partition that cannot be moved.
 
-This guide will help you to move, shrink, expend your windows partition with disk management tools bundle in Windows
+This guide will help you to move, shrink, expand your windows partition with disk management tools bundled in Windows.
 
-> ⚠️ **Caution:** Partition management has some risky to loss or not recovery your data. Please backup before start progress.
+> ⚠️ **Caution:** Partition management has some risk to lose or not recover your data. Please backup before starting the process.
 
 ## Check current partition
 
-`Right click` on Windows and select `Disk Managment`, you will see all disk installed in your system. Select `Volume (C:)` it will highlight partition and disk has current installed Windows
+`Right click` on Windows and select `Disk Management`, you will see all disks installed in your system. Select `Volume (C:)`; it will highlight the partition and disk that currently has Windows installed.
 
 ![Disk Management Tool](../assets/contents/2025/windows/recovery-partition/disk-management.png)
 
-As image shown, recovery and other partion has block at the end of disk. This will cause we cannot move/shrink/expend windows partition
+As shown in the image, the recovery and other partitions are blocked at the end of the disk. This prevents us from moving, shrinking, or expanding the Windows partition.
 
 Next step, we need some step to complete our goal
 
 - Remove recovery partition
-- Move/Shrink/Expend Windows partition
+- Move/Shrink/Expand Windows partition
 - Re-Create recovery partition
 
 ## Remove recovery partition
@@ -37,7 +37,7 @@ To remove partition, we will use `diskpart` to remove partition with step below
 diskpart
 ```
 
-Prompt will be change to `DISKPATH>`
+Prompt will change to `DISKPATH>`
 
 ```powershell
 Microsoft DiskPart version 10.0.26100.1150
@@ -63,15 +63,15 @@ delete partition override
 
 ## Resize your partition
 
-After remove recovery partion, you will be able to resize or move partition as your need
+After removing the recovery partition, you will be able to resize or move the partition as needed.
 
-- Expand/Shirnk/Move the disk using **Disk Management**, leaving ~1024 MB at the end of the drive for recreating the recovery partition
+- Expand/Shrink/Move the disk using **Disk Management**, leaving ~1024 MB at the end of the drive for recreating the recovery partition
 
-If you has some trouble for managing partition, try looking for `Troubleshooting` section for more info
+If you have some trouble managing partitions, refer to the `Troubleshooting` section for more info
 
 ## Re-Create Recovery partition
 
-After manage partition as your design, next step to re-create recovery partition
+After managing the partition as desired, the next step is to re-create the recovery partition.
 
 ### Create partition and copy recovery image
 
@@ -160,7 +160,7 @@ remove letter=R
 
 ## Troubleshooting
 
-Some step has issues this will be help in common issue we found oftenly.
+Some steps have issues; this will help with common issues we often find
 
 ### Cannot shrink a volume beyond the point
 
@@ -178,13 +178,13 @@ Go to `Settings -> About -> Advanced system settings -> System Protection` and d
 
 `pagefile` is virtual memory by using disk to caching data, it very helpful on system with low RAM
 
-![Pagin file](../assets/contents/2025/windows/recovery-partition/pagin-file.pngpagin-file.png)
+![Pagin file](../assets/contents/2025/windows/recovery-partition/pagin-file.png)
 
 ### (Optional) Using 3rd software
 
 Using 3rd software to resize partition if stuck with partition resizing process
 
-In this case using [AOMEI Partition Asisstant Standard](https://www.aomeitech.com/pa/standard.html)
+In this case using [AOMEI Partition Assistant Standard](https://www.aomeitech.com/pa/standard.html)
 
 Start program and select partition need to resize, specified new size as need
 
