@@ -178,7 +178,7 @@ Go to `Settings -> About -> Advanced system settings -> System Protection` and d
 
 `pagefile` is virtual memory by using disk to caching data, it very helpful on system with low RAM
 
-![Pagin file](../assets/contents/2025/windows/recovery-partition/pagin-file.png)
+![Paging file](../assets/contents/2025/windows/recovery-partition/paging-file.png)
 
 ### (Optional) Using 3rd software
 
