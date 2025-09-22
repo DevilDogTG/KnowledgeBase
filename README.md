@@ -1,16 +1,81 @@
-# Hi, I’m DevilDogTG 👋
+# 📖 DevilDogTG's Knowledge Base
 
-A software engineer who mainly works with **C# and .NET technologies**.  
-This blog is my personal space to **capture experiences, notes, and knowledge** — a kind of journey log to remember what I’ve learned and done before.
+![Last 7 days](https://wakapi.dev/api/badge/DevilDogTG/DevilDogTG/interval:7_days?label=Last%207%20Days)
 
-You’ll mostly find posts about:
-- 💻 Development, coding, and infrastructure
-- 📝 Lessons and insights from real-world projects
-- 🌏 Bits of life beyond tech — because not everything is code
+Welcome to my personal knowledge base! This space is powered by Jekyll and serves as a collection of notes, tutorials, and resources for development, system administration, and more.
 
-Outside of work, I’m someone who:
-- 🚗 Loves traveling by car, exploring roads and places at my own pace  
-- 🐶 Is seriously in love with dogs
+## 🚀 Getting Started: Run Locally
 
-At its heart, this blog is a mix of **DevDogs adventures in the development world** and everyday stories.  
-Thanks for dropping by — hope you enjoy the life!
+### Preparing Environment (Windows)
+
+Install `Ruby`. In this case I'm using `3.1.7` on Windows
+
+Download: [RubyInstaller](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.1.7-1/rubyinstaller-devkit-3.1.7-1-x64.exe)
+
+After installation wizard completed, run `ridk install` and choose `MSYS2 base + dev toolchain`
+
+Reopen your terminal
+
+```powershell
+. $PROFILE
+```
+
+> ⚠️ If command to reload terminal profile does not work, try to re-login to your windows
+
+Check version installed
+
+```powershell
+ruby -v
+gem -v
+```
+
+Install `bundler` after installing Ruby
+
+```powershell
+gem install bundler
+# Check bundle version
+bundle -v
+```
+
+### Install dependencies
+
+If you need to install packages in local folder, run this command:
+
+```powershell
+# Install gems for this project (kept local to the repo)
+bundle config set path vendor/bundle
+```
+
+Then to install required packages, simply run
+
+```powershell
+bundle install
+```
+
+### Run
+
+Run it on local system
+
+```powershell
+bundle exec jekyll clean && bundle exec jekyll serve --livereload
+```
+
+`--livereload` will help local site keep updating when you edited files.
+
+## 🛠️ GitHub Actions
+
+This repository uses GitHub Actions for CI/CD. On every push or pull request, the workflow will:
+
+- Build the Jekyll site
+- Run tests to ensure everything works
+- Deploy to GitHub Pages (if on the main branch)
+
+See `.github/workflows/` for workflow details.
+
+## 🙏 Special Thanks
+
+- **[Jekyll](https://jekyllrb.com/)**: Static site generator
+- **[Chirpy Theme](https://chirpy.cotes.page/)**: Beautiful Jekyll theme
+- **[GitHub](https://github.com/)**: Hosting and CI/CD platform
+- **[Wakapi](https://wakapi.dev/)**: Coding activity tracking
+- All open-source projects that make this possible!
