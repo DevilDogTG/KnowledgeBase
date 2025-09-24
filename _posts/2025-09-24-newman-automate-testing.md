@@ -1,5 +1,5 @@
 ---
-title: "📖 `newman` Testing cli for postman"
+title: "📖 `newman` Testing CLI for postman"
 author: DevilDogTG
 date: 2025-09-24 10:24:00 +0700
 categories: [Developer, Postman]
