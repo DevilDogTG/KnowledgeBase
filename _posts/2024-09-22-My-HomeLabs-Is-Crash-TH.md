@@ -3,7 +3,7 @@ title: เมื่อ Home Lab เกิดปัญหา (Proxmox)
 author: DevilDogTG
 date: 2024-08-11 08:00:00 +0700
 categories: [Blogs, Home Lab]
-tags: [blogs, homelab, proxmox, ภาษาไทย] # TAG names should always be lowercase
+tags: [blogs, homelab, proxmox, lang:th] # TAG names should always be lowercase
 ---
 
 เรื่องนี้เกิดจากเหตุการณ์ล่าสุด ที่ Home Lab ที่ใช้งานอยู่เกิดปัญหา จนทำให้ข้อมูลย้อนหลังกลับไปถึง 4 เดือน จึงอยากจะจดไว้เป็นบทเรียนสำคัญ ในการดูแลระบบ ไม่ว่าจะขนาดเล็กหรือใหญ่ใดๆก็ตาม ระบบจำเป็นต้องได้รับการดูแลและป้องกันเอาไว้เสมอ เพราะเมื่อมันเกิดปัญหาขึ้นมา แก้ไขปัญหามันเหนื่อยกว่าที่ต้องดูแลมากนัก

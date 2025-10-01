@@ -2,8 +2,8 @@
 title: ทริปแรกกับ Subaru Forester 2022 (SK) เน้นใช้งาน Eyesight เลย
 author: DevilDogTG
 date: 2022-07-17 08:00:00 +0700
-categories: [Review, Car]
-tags: [car, review, ภาษาไทย]
+categories: [Blogs, Car]
+tags: [car, review, lang:th]
 ---
 
 อยากโน๊ตและจดจำความรู้สึกแรกๆ ในช่วงเห่อรถ ที่ได้นำมาใช้งานจริงๆ และเป็นทริปการเดินทางแรก ที่ใช้รถ C-SUV ในการเดินทางไกลของตัวเอง
