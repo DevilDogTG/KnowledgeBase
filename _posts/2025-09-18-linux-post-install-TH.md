@@ -3,7 +3,7 @@ title: ตั้งค่าเพิ่มเติมหลังติดต�
 author: DevilDogTG
 date: 2025-09-18 10:09:00 +0700
 categories: [Linux, Configuration]
-tags: [tutorials, linux, debian, ภาษาไทย] # TAG names should always be lowercase
+tags: [tutorials, linux, debian, lang:th] # TAG names should always be lowercase
 ---
 
 หลังทำการติดตั้ง `Debian` แบบพื้นฐาน, แนะนำให้ตั้งค่าเพิ่มเติม (ตัวเลือก)
