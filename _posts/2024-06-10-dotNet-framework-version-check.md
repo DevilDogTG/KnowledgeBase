@@ -1,7 +1,7 @@
 ---
 title: ".NET Framework Version Check"
 author: DevilDogTG
-date: 2025-10-24 10:56:00 +0700
+date: 2024-06-10 10:56:00 +0700
 categories: [Developers, .NET]
 tags: [developer, net-framework, lang:en]
 ---
