@@ -8,7 +8,7 @@ tags: [tutorials, c#, middleware, lang:th] # TAG names should always be lowercas
 
 Middleware มองง่ายๆ มันคือ script/program ของเราตัวนึง ที่แทรกอยู่ตรงกลางเวลามีการเรียก Request มาที่แอพพลิเคชั่นเรา ถ้ามองเป็นรูปจะประมาณนี้
 
-![Where is middleware?](../assets/contents/2024/middleware/custom-middleware-01.png)
+![Where is middleware?](/assets/contents/2024/middleware/custom-middleware-01.png)
 
 จะสังเกตุว่า ทุก request จะวิ่งผ่าน middleware เสมอ และก่อนกลับไปก็สามารถทำอะไรบางอย่างก่อนส่งกลับไปได้ เหมือน Middleware ครอบ web application อยู่ภายใน (ด่านชั้นนอก, ด่านชั้นใน) ทำนองนั้น
 

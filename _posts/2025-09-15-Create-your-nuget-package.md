@@ -35,15 +35,15 @@ Type 'NuGet help <command>' for help on a specific command.
 
 Go to website [Nuget], log-in to your account and go to `API Keys` menu
 
-![API Keys Menu](../assets/contents/2025/create-nuget/nuget-api-keys-menu.png)
+![API Keys Menu](/assets/contents/2025/create-nuget/nuget-api-keys-menu.png)
 
 Select key name, expires time and scope as you need, you can specified `Glob Pattern` to `*` for manager all packages.
 
-![Create API Key](../assets/contents/2025/create-nuget/nuget-create-api-key.png)
+![Create API Key](/assets/contents/2025/create-nuget/nuget-create-api-key.png)
 
 after created your can copy your api key here
 
-![Copy Key](../assets/contents/2025/create-nuget/nuget-key-copy.png)
+![Copy Key](/assets/contents/2025/create-nuget/nuget-key-copy.png)
 
 ## Configure your api key on local
 

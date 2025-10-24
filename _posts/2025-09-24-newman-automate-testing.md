@@ -14,9 +14,9 @@ You need to run `npm` that required `NodeJs` for more information please go to [
 
 Export your `Collections` and `Environments` from Postman
 
-![Export Collection](../assets/contents/2025/developer/postman/newman/newman-01.png)
+![Export Collection](/assets/contents/2025/developer/postman/newman/newman-01.png)
 
-![Export Environment](../assets/contents/2025/developer/postman/newman/newman-environment.png)
+![Export Environment](/assets/contents/2025/developer/postman/newman/newman-environment.png)
 
 Preparing your project folder, for example `D:\Works\Newman` and placing exported files to working folder
 
@@ -45,7 +45,7 @@ newman run ./yourcollection.postman_collection.json -e ./yourenvironment.postman
 
 They will running and summary result to show in terminal like this
 
-![newman Result](../assets/contents/2025/developer/postman/newman/newman-result-terminal.png)
+![newman Result](/assets/contents/2025/developer/postman/newman/newman-result-terminal.png)
 
 ## [Optional] Extra report html
 

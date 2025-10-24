@@ -17,4 +17,4 @@ gci 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse | gp -name Versi
 
 You will get result as below
 
-![Command result](../assets/contents/2025/developer/dotnet-framework/version-check/version-result.png)
+![Command result](/assets/contents/2025/developer/dotnet-framework/version-check/version-result.png)

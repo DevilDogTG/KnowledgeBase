@@ -44,8 +44,8 @@ qm set <vmid> -scsi<scsi_number> /dev/disk/by-id/wwn-0x5000c500661eeebd
 
 After assigning the disk to the VM, you will see the disk in the `Hardware` section.
 
-![Disk List](../assets/contents/2025/proxmox/passthrough-disk/disk-backup-false.png)
+![Disk List](/assets/contents/2025/proxmox/passthrough-disk/disk-backup-false.png)
 
 (Optional) Most of the time, I disable backup for the physical disk (for personal reasons) by unchecking the `backup` option
 
-![Backup option](../assets/contents/2025/proxmox/passthrough-disk/backup-option.png)
+![Backup option](/assets/contents/2025/proxmox/passthrough-disk/backup-option.png)

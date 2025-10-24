@@ -14,7 +14,7 @@ tags: [blogs, homelab, proxmox, lang:th] # TAG names should always be lowercase
 
 โดยทั้ง 3 เครื่องจะรัน Proxmox VE (Proxmox — Powerful open-source server solutions) ให้สามารถ virtualize server จำนวนมากๆ ใช้ในแต่ละงานได้ และใน 3 Nodes นี้จะทำ HA ไว้ เพื่อที่เวลาเครื่องใดเครื่องหนึ่งมีปัญหา อีกเครื่องจะสามารถรัน VM นั้นๆทดแทนได้ทันที (แทบไม่มี downtime)
 
-![Overview](../assets/contents/2024/homelab-crash/homelabs-crash-01.png)
+![Overview](/assets/contents/2024/homelab-crash/homelabs-crash-01.png)
 
 สำหรับเรื่องของ Home Assistant หรือ Proxmox ขอเก็บไว้เล่าสู่กันฟังภายหลัง
 
@@ -22,7 +22,7 @@ tags: [blogs, homelab, proxmox, lang:th] # TAG names should always be lowercase
 
 จากสัปดาห์ที่ผ่านมา ประมาณกลางสัปดาห์ พี่ชายโทรแจ้งว่า Server ทดสอบไม่สามารถใช้งานได้ หลังตรวจสอบเบื้องต้น ก็เจอว่าเครื่อง Proxmox 01 มีอาการเอ๋อ VMs ทุกตัวที่รันอยู่ในนี้ไม่สามารถเข้าถึงได้ ซึ่งก็คิดว่า “ไม่ได้เป็นปัญหาอะไรหนิ เราทำ HA ไว้แล้ว เดี๋ยวมันก็ย้ายไปรันที่ Node อื่น งานนี้ชิลล์” หลังจากความคิดนั้น สิ่งที่ทำก็คือ “Force Restart Proxmox 01” ก็เป็นไปตามปกติ VMs migrate ไปรันบน Proxmox 03 ตามปกติ จนกว่าเครื่อง 01 จะ Online ตามเดิม
 
-![HA Migrate running VMs to `Proxmox 03`](../assets/contents/2024/homelab-crash/homelabs-crash-02.png)
+![HA Migrate running VMs to `Proxmox 03`](/assets/contents/2024/homelab-crash/homelabs-crash-02.png)
 
 ## กลิ่นแปลกๆ
 
@@ -36,7 +36,7 @@ tags: [blogs, homelab, proxmox, lang:th] # TAG names should always be lowercase
 
 กลับมาที่ปัญหาที่เครื่องไม่สามารถ Migrate กลับมาได้ ไล่เช็คสาเหตุจนพบว่า Switch (No Brand) เสียไป Port นึง ทำให้เครื่อง 01 ไม่สามารถคุยกับเครื่อง 03 ได้ ส่งผลทำให้ไม่สามารถ Migrate VMs กลับมารันที่เครื่อง 01 ได้ตามปกติ
 
-![Network switch issue](../assets/contents/2024/homelab-crash/homelabs-crash-03.png)
+![Network switch issue](/assets/contents/2024/homelab-crash/homelabs-crash-03.png)
 
 ฮั่นแน่ แก้ไขไม่ยาก port พังก็ย้าย port ผลกระทบคือ port ที่เสียคือ SFP+ 10Gbps แต่ย้ายมาเหลือแค่ 2.5Gbps แต่ไม่เป็นไร ทำให้ระบบกลับมาใช้ได้ก่อน อุปกรณ์ที่เสียหายค่อยว่ากัน เรารับความเสี่ยงตั้งแต่เลือกของ No Brand แล้ว
 
@@ -52,11 +52,11 @@ tags: [blogs, homelab, proxmox, lang:th] # TAG names should always be lowercase
 
 Proxmox จะมี Feature HA เพื่อให้กรณีที่เครื่องเรามีปัญหา Node อื่นๆที่พร้อมทำงานจะรับหน้าที่เข้ามาทำงานแทนให้ โดยปกติเค้าก็จะใช้วิธีเก็บข้อมูล VMs บน SAN แล้วให้แต่ละ Node รันทดแทน วิธีการนี้จะไม่มีการสะดุดกรณีเครื่องมีปัญหา
 
-![Proxmox with VMs on SAN](../assets/contents/2024/homelab-crash/homelabs-crash-04.png)
+![Proxmox with VMs on SAN](/assets/contents/2024/homelab-crash/homelabs-crash-04.png)
 
 ซึ่งนี่มันคือ Home Lab นะคร๊าบ ผมไม่มี SAN ในบ้านจ้า ทางแก้คือ ก็ Duplicate VMs ไว้ที่ทุกๆ Node นั่นแหละ โดยใช้ Proxmox ทำ Replicate เพื่อ Sync ข้อมูล VMs ตลอด (ทุก 15s — 15min แล้วแต่ความสำคัญ)
 
-![Data Replications](../assets/contents/2024/homelab-crash/homelabs-crash-05.png)
+![Data Replications](/assets/contents/2024/homelab-crash/homelabs-crash-05.png)
 
 ฟังดูทุกอย่างสวยงามและปกติดี ปัญหามันอยู่ตรงที่ เมื่อ Network ใช้ไม่ได้ Replicate Data มันก็ทำไม่ได้เช่นกัน!!! อ๋อกันไหม…. ใช่ครับ 03 ใช้ข้อมูลตั้งแต่ปลายเดือน 5 ก่อนที่ Port ของ Switch จะพัง ในการรัน VMs ต่อเนื่อง!!! ซึ่งมันทำให้ เมื่อแก้ไขเรื่องที่ 2 เครื่องไม่สามารถคุยกันได้ ระบบกลับมาวิ่งปกติ จะทำการ replicate data จาก 03 -> 01 เพราะเป็นเครื่องที่รันล่าสุด
 

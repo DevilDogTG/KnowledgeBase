@@ -18,7 +18,7 @@ This guide will help you to move, shrink, expand your windows partition with dis
 
 `Right click` on Windows and select `Disk Management`, you will see all disks installed in your system. Select `Volume (C:)`; it will highlight the partition and disk that currently has Windows installed.
 
-![Disk Management Tool](../assets/contents/2025/windows/recovery-partition/disk-management.png)
+![Disk Management Tool](/assets/contents/2025/windows/recovery-partition/disk-management.png)
 
 As shown in the image, the recovery and other partitions are blocked at the end of the disk. This prevents us from moving, shrinking, or expanding the Windows partition.
 
@@ -170,7 +170,7 @@ The reason why Windows won’t let you shrink the volume is as the message shown
 
 Go to `Settings -> About -> Advanced system settings -> System Protection` and disable system protection for drive to be shrink
 
-![System Restore](../assets/contents/2025/windows/recovery-partition/system-restore.png)
+![System Restore](/assets/contents/2025/windows/recovery-partition/system-restore.png)
 
 > ℹ️ You can enable this later after complete shrink partition
 
@@ -178,7 +178,7 @@ Go to `Settings -> About -> Advanced system settings -> System Protection` and d
 
 `pagefile` is virtual memory by using disk to caching data, it very helpful on system with low RAM
 
-![Paging file](../assets/contents/2025/windows/recovery-partition/paging-file.png)
+![Paging file](/assets/contents/2025/windows/recovery-partition/paging-file.png)
 
 ### (Optional) Using 3rd software
 
@@ -188,17 +188,17 @@ In this case using [AOMEI Partition Assistant Standard](https://www.aomeitech.co
 
 Start program and select partition need to resize, specified new size as need
 
-![AOMEI Software](../assets/contents/2025/windows/recovery-partition/aomei.png)
+![AOMEI Software](/assets/contents/2025/windows/recovery-partition/aomei.png)
 
 After confirm, program will ask for restart (because we're resizing OS partition), select PreOS mode
 
 It will automatically restart into PreOS mode and start resizing your partition
 
-![AOMEI PreOS Mode](../assets/contents/2025/windows/recovery-partition/aomei-preos.png)
+![AOMEI PreOS Mode](/assets/contents/2025/windows/recovery-partition/aomei-preos.png)
 
 When resizing process completed, system will restart again and Windows will start disk scan because disk has changed to ensure OS can run normally
 
-![Windows DiskScan](../assets/contents/2025/windows/recovery-partition/disk-scan.png)
+![Windows DiskScan](/assets/contents/2025/windows/recovery-partition/disk-scan.png)
 
 ### Cannot find `winre.wim` image
 
@@ -208,7 +208,7 @@ If you don't find `winre.wim` in System32
 - Mount ISO image
 - Open `\sources\install.wim` with `7-Zip`
     - Extract `winre.wim` from `\Windows\System32\Recovery\winre.wim` inside `install.wim` image
-    ![winre.wim](../assets/contents/2025/windows/recovery-partition/winre-wim.png)
+    ![winre.wim](/assets/contents/2025/windows/recovery-partition/winre-wim.png)
 - Copy it to your recovery partition.
 
 ## References
