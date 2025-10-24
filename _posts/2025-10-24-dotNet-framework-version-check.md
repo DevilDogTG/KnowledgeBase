@@ -1,11 +1,11 @@
 ---
-title: ".Net Framework Version Check"
+title: ".NET Framework Version Check"
 author: DevilDogTG
-date: 2025-10-01 10:56:00 +0700
-categories: [Blogs, Games]
-tags: [games, dqm3, powershell, lang:th]
+date: 2025-10-24 10:56:00 +0700
+categories: [Developers, .NET]
+tags: [developer, net-framework, lang:en]
 ---
-For current dotnet you can see installed runtime and sdk very simple by using `dotnet --info`, but old .NET framework has more difficult to take a look for it.
+For current dotnet you can very simply see installed runtime and SDK by using `dotnet --info`, but checking the old .NET Framework is more difficult.
 
 ## Quick solution
 
