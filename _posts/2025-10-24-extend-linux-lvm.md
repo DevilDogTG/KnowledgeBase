@@ -10,7 +10,7 @@ Extending a Logical Volume Manager (LVM) in Linux involves adding more space to 
 
 ## Extend the Volume Group (VG)
 
-If you use virtual disk, you can resize disk and create new partition use to extend existing volumn group by using `fdisk` or you can add more disk to extend VG too.
+If you use virtual disk, you can resize disk and create new partition use to extend existing volume group by using `fdisk` or you can add more disk to extend VG too.
 
 You can check your VG list by using `sudo vgs` and extend by:
 
@@ -31,7 +31,7 @@ Please note you can list your lv by using `sudo lvs`
 
 ## Resize the filesystem
 
-Extened space for filesystem without restarting by:
+Extend space for filesystem without restarting by:
 
 ```sh
 sudo resize2fs /dev/vg_name/lv_name
