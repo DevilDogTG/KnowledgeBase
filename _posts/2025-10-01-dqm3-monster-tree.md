@@ -18,7 +18,7 @@ tags: [games, dqm3, powershell, lang:th]
 
 เริ่มทำโดยการเขียนแบบ manual ซึ่ง ตัวแรกๆไม่เป็นไร พอเริ่มไปไกลหน่อย Monster เราเริ่มเก่งขึ้น ต้องพัฒนาไปร่างถัดไป มันบรรลัยมาก แบบนี้ (อันนี้รูปหลังทำ tools gen มานะ) แค่นึกว่าจะต้องทำ manual นี่ก็พอละ เลิกคิด ไม่ได้เล่นเกมส์แน่นอน มัวแต่วาดผัง
 
-![ตัวอย่างความบรรลัย](../assets/contents/2025/blogs/dqm3-monster-tree/deep-down-monster.png)
+![ตัวอย่างความบรรลัย](/assets/contents/2025/blogs/dqm3-monster-tree/deep-down-monster.png)
 
 เช่นเดียวกันกับการเปิด browser หลายๆ tab ไม่สามารถแก้ปัญหานี้ได้ เพราะสุดท้ายหา tab ที่ต้องการไม่เจอ!!!
 

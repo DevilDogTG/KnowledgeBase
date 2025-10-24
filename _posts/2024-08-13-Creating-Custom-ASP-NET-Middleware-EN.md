@@ -8,7 +8,7 @@ tags: [tutorials, c#, middleware] # TAG names should always be lowercase
 
 Middleware in ASP.NET Core acts as a pipeline through which every HTTP request passes before reaching your application’s core logic. Think of it as a series of gates or filters that process incoming requests and outgoing responses.
 
-![Where is middleware?](../assets/contents/2024/middleware/custom-middleware-01.png)
+![Where is middleware?](/assets/contents/2024/middleware/custom-middleware-01.png)
 
 ## Where Does Middleware Fit?
 
