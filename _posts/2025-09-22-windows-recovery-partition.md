@@ -2,7 +2,7 @@
 title: "Remove/Recreate Windows recovery partition"
 author: DevilDogTG
 date: 2025-09-22 08:44:00 +0700
-categories: [Windows, Configuration]
+categories: [System Administrator, Windows]
 tags: [tutorials, windows, partitions]
 ---
 

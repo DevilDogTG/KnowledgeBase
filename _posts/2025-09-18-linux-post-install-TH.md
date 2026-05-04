@@ -2,7 +2,7 @@
 title: ตั้งค่าเพิ่มเติมหลังติดตั้ง Debian
 author: DevilDogTG
 date: 2025-09-18 10:09:00 +0700
-categories: [Linux, Configuration]
+categories: [System Administrator, Linux]
 tags: [tutorials, linux, debian, lang:th] # TAG names should always be lowercase
 ---
 

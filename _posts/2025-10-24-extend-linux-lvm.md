@@ -2,7 +2,7 @@
 title: "How to extend LVM in Linux"
 author: DevilDogTG
 date: 2025-10-24 11:27:00 +0700
-categories: [Linux, Configuration]
+categories: [System Administrator, Linux]
 tags: [tutorials, linux, lvm, lang:en]
 ---
 
