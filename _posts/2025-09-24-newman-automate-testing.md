@@ -2,7 +2,7 @@
 title: "📖 `newman` Testing CLI for postman"
 author: DevilDogTG
 date: 2025-09-24 10:24:00 +0700
-categories: [Developers, Postman]
+categories: [Developers, Testing]
 tags: [postman, newman, testing, lang:en]
 ---
 
