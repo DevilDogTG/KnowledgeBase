@@ -148,7 +148,7 @@ To manage NGINX and automate SSL certificates with a UI:
 bash <(curl -L -s https://raw.githubusercontent.com/0xJacky/nginx-ui/master/install.sh) install
 ```
 
-Access NGINX-UI at <http://ip.address:9000>. Once configured, access NetBox at <https://ip.address>.
+Access NGINX-UI at `http://ip.address:9000`. Once configured, access NetBox at `https://ip.address`.
 
 ## References
 
