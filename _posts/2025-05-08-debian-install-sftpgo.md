@@ -69,7 +69,7 @@ Or initialize the provider manually:
 sudo sftpgo initprovider
 ```
 
-Open a browser and go to <http://your.ip.address:8080>. On first access, you will create the admin account.
+Open a browser and go to `http://your.ip.address:8080`. On first access, you will create the admin account.
 
 ![Initial SFTPGo admin account setup](/assets/contents/2025/linux-debian-installation/sftpgo.png)
 

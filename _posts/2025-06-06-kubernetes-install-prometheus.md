@@ -187,6 +187,6 @@ spec:
                   number: 9090
 ```
 
-Access Prometheus at <http://prometheus.dmnsn.k8s:9090>.
+Access Prometheus at `http://prometheus.dmnsn.k8s:9090`.
 
 > **Tip:** You can combine all YAML manifests into a single file by separating each document with `---`.
