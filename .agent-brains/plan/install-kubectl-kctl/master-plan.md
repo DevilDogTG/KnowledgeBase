@@ -1,7 +1,7 @@
 ---
 task: install-kubectl-kctl
 status: active
-progress: 90
+progress: 95
 branch: feature/install-kubectl-kctl
 created: 2026-06-28
 updated: 2026-06-28
@@ -19,4 +19,5 @@ Create a repeatable installation and update script for `kubectl` (via Kubernetes
 - [x] Link the note in `docs/linux/Index.md`
 - [x] Verify/Test the script locally using dry-run or verification commands
 - [x] Update the Plan Index and Project Roadmap
+- [x] Create blog post in src/_posts/ promoting the KB note
 - [ ] Ask the user for confirmation and final review

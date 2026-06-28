@@ -5,4 +5,4 @@
 |------|--------|----------|--------|---------|
 | [modernize-workflow](modernize-workflow/master-plan.md) | done | 100% | feat/modernize-workflow | 2026-06-28 |
 | [dual-purpose-workspace](archive/dual-purpose-workspace/master-plan.md) | done | 100% | feat/dual-purpose-workspace | 2026-06-28 |
-| [install-kubectl-kctl](install-kubectl-kctl/master-plan.md) | active | 90% | feature/install-kubectl-kctl | 2026-06-28 |
+| [install-kubectl-kctl](install-kubectl-kctl/master-plan.md) | active | 95% | feature/install-kubectl-kctl | 2026-06-28 |
