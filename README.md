@@ -2,75 +2,91 @@
 
 ![Last 7 days](https://wakapi.dev/api/badge/DevilDogTG/DevilDogTG/interval:7_days?label=Last%207%20Days)
 
-Welcome to my personal knowledge base! This space is powered by Jekyll and serves as a collection of notes, tutorials, and resources for development, system administration, and more.
+A dual-purpose workspace combining a **local knowledge base** and a **public web blog**.
 
-## 🚀 Getting Started: Run Locally
+## 🗂️ Repository Structure
 
-### Preparing Environment (Windows)
+```
+/
+├── docs/   # Local knowledge base — rough working notes, organized by topic
+└── src/    # Web blog — Jekyll + Chirpy site published to GitHub Pages
+```
 
-Install `Ruby`. In this case I'm using `3.4` on Windows
+- **[`/docs`](docs/Index.md)** — my local, internal-use knowledge base. Notes here are
+  low-ceremony: quick captures, investigations, and references organized into topic folders,
+  each with its own `Index.md`. Start at [`docs/Index.md`](docs/Index.md).
+- **[`/src`](src)** — the polished web blog (Jekyll + Chirpy theme) deployed to GitHub Pages
+  at [devildogtg.dmnsn.com](https://devildogtg.dmnsn.com).
 
-Download: [RubyInstaller](https://rubyinstaller.org/downloads/)
+### ✍️ The `/docs → /src` workflow
 
-After installation wizard completed, run `ridk install` and choose `MSYS2 base + dev toolchain`
+Rough notes start their life in `/docs`. When a note is worth publishing, it gets cleaned up
+and promoted into `/src` as a blog post. This is a **soft** flow:
 
-Reopen your terminal
+- Not every note graduates — `/docs` is meant to hold more entries than `/src`.
+- `/src` may also contain original posts (e.g. personal journey) that never lived in `/docs`.
+
+## 🚀 Running the Blog Locally
+
+The blog lives in [`/src`](src). **Run all commands from inside `src/`.**
+
+### Preparing the environment (Windows)
+
+Install `Ruby` (this project uses `3.4`). Download: [RubyInstaller](https://rubyinstaller.org/downloads/).
+
+After the installation wizard completes, run `ridk install` and choose `MSYS2 base + dev toolchain`.
+
+Reopen your terminal:
 
 ```powershell
 . $PROFILE
 ```
 
-> ⚠️ If command to reload terminal profile does not work, try to re-login to your windows
+> ⚠️ If reloading the terminal profile doesn't work, try re-logging into Windows.
 
-Check version installed
+Check the versions installed:
 
 ```powershell
 ruby -v
 gem -v
 ```
 
-Install `bundler` after installing Ruby
+Install `bundler`:
 
 ```powershell
 gem install bundler
-# Check bundle version
 bundle -v
 ```
 
 ### Install dependencies
 
-If you need to install packages in local folder, run this command:
+From the `src/` directory:
 
 ```powershell
-# Install gems for this project (kept local to the repo)
+cd src
+# Keep gems local to the repo (optional)
 bundle config set path vendor/bundle
-```
-
-Then to install required packages, simply run
-
-```powershell
 bundle install
 ```
 
 ### Run
 
-Run it on local system
-
 ```powershell
+cd src
 bundle exec jekyll clean && bundle exec jekyll serve --livereload
 ```
 
-`--livereload` will help local site keep updating when you edited files.
+`--livereload` keeps the local site updating as you edit files.
 
 ## 🛠️ GitHub Actions
 
-This repository uses GitHub Actions for CI/CD. On every push or pull request, the workflow will:
+This repository uses GitHub Actions for CI/CD. The workflows build the Jekyll site **from
+`/src`**:
 
-- Build the Jekyll site
-- Run tests to ensure everything works
-- Deploy to GitHub Pages (if on the main branch)
+- **Build & Test** (`pages-build.yml`) — runs on pull requests.
+- **Build & Deploy** (`pages-deploy.yml`) — builds and deploys to GitHub Pages on pushes to `main`.
 
-See `.github/workflows/` for workflow details.
+Changes limited to `/docs` do **not** trigger a deploy. See `.github/workflows/` for details.
 
 ## 🙏 Special Thanks
 
