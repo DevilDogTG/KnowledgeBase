@@ -141,3 +141,4 @@ Record the new structure + promotion workflow in `./.agent-brains/memory/overvie
   handover for later execution. No commits yet.
 
 - **2026-06-28 (exec):** Executed full playbook. Seeded /docs (edge PWA note re-mapped to linux/ as it's Linux-focused). Moved blog to /src, rewired both workflows, fixed .gitmodules + .gitignore + _config excludes, deleted Backup/, rewrote README. Installed Ruby 3.3 locally and validated: bundle install + production jekyll build (45 posts, CNAME preserved in _site) + htmlproofer 0 errors. Updated memory. Nothing committed yet.
+- **2026-06-28 (ship):** Ran finish-feature → github pr-workflow. Rebased (clean), test-gate green, pushed via SSH (HTTPS blocked by missing workflow scope). Opened PR #32, marked ready; CI all green incl. the rewired Build & Test from /src. Awaiting merge confirmation.
