@@ -24,3 +24,7 @@ with 0 errors.
 Promotion model: rough notes in `/docs` get polished and promoted into `/src` posts (soft,
 non-strict; `/src` may also hold original posts).
 <!-- end:changes -->
+
+## Key Decisions
+- [ADR-0001](../decisions/ADR-0001-relocate-blog-into-src.md) — relocate the Jekyll blog into
+  `/src` and build GitHub Pages from there, with `/docs` as the local knowledge base.
