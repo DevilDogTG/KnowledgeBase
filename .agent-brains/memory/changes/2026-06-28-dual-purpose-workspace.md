@@ -1,13 +1,8 @@
-# Project Overview
+---
+date: 2026-06-28
+title: Restructure into dual-purpose workspace (/docs + /src)
+---
 
-Initial status.
-
-## Recent Changes
-<!-- begin:changes -->
-### 2026-06-28 — Modernize CI/CD workflows and fix deploy syntax
-Modernized the personal knowledge base workflows to target `main` as the sole primary branch. Fixed syntax errors in double-hyphen flags within `.github/workflows/pages-deploy.yml`.
-
-### 2026-06-28 — Restructure into dual-purpose workspace (/docs + /src)
 Restructured the repo into a dual-purpose workspace:
 - `/docs` — local knowledge base of rough notes, organized into topic folders each with an
   `Index.md` (seeded by copying 7 notes from `../help-desk`; originals left as backup).
@@ -23,4 +18,3 @@ with 0 errors.
 
 Promotion model: rough notes in `/docs` get polished and promoted into `/src` posts (soft,
 non-strict; `/src` may also hold original posts).
-<!-- end:changes -->
