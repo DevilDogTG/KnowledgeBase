@@ -1,16 +1,15 @@
-# Installing kubectl and kctl on Debian/Ubuntu
+# Installing kubectl, kubecolor, and kctl on Debian/Ubuntu
 
-This guide covers installing and upgrading `kubectl` (the official Kubernetes CLI) and `kctl` (a convenient symlink/alias for faster typing) on Debian/Ubuntu systems.
+This guide covers installing and upgrading `kubectl` (the official Kubernetes CLI), `kubecolor` (a wrapper that colorizes output for improved readability), and setting up `kctl` as a convenient command for `kubecolor`.
 
 An automated, repeatable installer and updater script is available in this repository at:
 [install-kubectl-kctl.sh](scripts/install-kubectl-kctl.sh)
 
-## Features
-- **Preflight Checks:** Verifies compatibility and that necessary dependencies (`curl`, `sudo`, `gpg`, `sha256sum`) are available.
-- **Idempotency:** Only downloads and installs when a new version is available or when forced.
-- **Checksum Verification:** Verifies the cryptographic SHA256 checksum of the downloaded binary before moving it to `/usr/local/bin`.
-- **System-Wide CLI Link:** Creates `/usr/local/bin/kctl` pointing to `/usr/local/bin/kubectl`.
-- **Shell Auto-Completion:** Automatically configures tab autocompletion for both `kubectl` and `kctl` in `.bashrc` and `.zshrc`.
+## How It Works
+1.  **kubectl Installation:** Installs or updates the official `kubectl` binary to `/usr/local/bin/kubectl`.
+2.  **kubecolor Installation:** Downloads the latest stable precompiled binary from `github.com/kubecolor/kubecolor` and installs it to `/usr/local/bin/kubecolor`.
+3.  **kctl Symlink:** Links `/usr/local/bin/kctl` directly to `kubecolor`. When you run `kctl`, it invokes `kubecolor`, which runs `kubectl` under the hood and colorizes the output.
+4.  **Tab Auto-Completion:** Automatically configures tab completion for `kubectl`, `kubecolor`, and `kctl` in `.bashrc` and `.zshrc`.
 
 ---
 
@@ -26,10 +25,11 @@ Run the script directly from the repository root:
 
 | Flag | Long Flag | Description |
 |------|-----------|-------------|
-| `-v` | `--version <VERSION>` | Install a specific version (e.g., `v1.30.0`) instead of the latest stable. |
-| `-f` | `--force` | Force download and installation even if already up to date. |
+| `-v` | `--version VERSION` | Install a specific kubectl version (e.g., `v1.30.0`) instead of the latest stable. |
+| `-k` | `--kubecolor-version VER` | Install a specific kubecolor version (e.g., `v0.6.0`) instead of the latest stable. |
+| `-f` | `--force` | Force download and installation of both binaries even if already up to date. |
 | `-c` | `--completion` | Automatically inject completion script settings into `~/.bashrc` and `~/.zshrc`. |
-| `-d` | `--dry-run` | Run preflight check and print actions, without modifying any files or downloading binaries. |
+| `-d` | `--dry-run` | Run preflight check and version comparison, but do not download or install. |
 | `-h` | `--help` | Display the usage menu. |
 
 ### Examples
@@ -44,9 +44,9 @@ Run the script directly from the repository root:
 ./docs/linux/scripts/install-kubectl-kctl.sh --completion
 ```
 
-**3. Install or downgrade to a specific version (e.g., v1.31.1):**
+**3. Install specific versions:**
 ```bash
-./docs/linux/scripts/install-kubectl-kctl.sh --version v1.31.1
+./docs/linux/scripts/install-kubectl-kctl.sh --version v1.31.1 --kubecolor-version v0.6.0
 ```
 
 ---
@@ -58,10 +58,11 @@ If you choose not to run the script with the `-c` / `--completion` flag, you can
 ### Bash (`~/.bashrc`)
 Add this block at the end of your `~/.bashrc`:
 ```bash
-# Kubernetes completion
+# Kubernetes and Kubecolor completion
 if command -v kubectl >/dev/null 2>&1; then
   source <(kubectl completion bash)
-  complete -o default -F __start_kubectl kctl
+  complete -o default -F __start_kubectl kubecolor 2>/dev/null || true
+  complete -o default -F __start_kubectl kctl 2>/dev/null || true
 fi
 ```
 Then reload with:
@@ -72,10 +73,11 @@ source ~/.bashrc
 ### Zsh (`~/.zshrc`)
 Add this block at the end of your `~/.zshrc`:
 ```bash
-# Kubernetes completion
+# Kubernetes and Kubecolor completion
 if command -v kubectl >/dev/null 2>&1; then
   source <(kubectl completion zsh)
-  compdef __start_kubectl kctl
+  compdef __start_kubectl kubecolor 2>/dev/null || true
+  compdef __start_kubectl kctl 2>/dev/null || true
 fi
 ```
 Then reload with:
