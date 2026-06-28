@@ -1,30 +1,12 @@
 ## What changed
-Restructured the repository into a dual-purpose workspace:
-
-- **`/docs`** — a local knowledge base of rough, internal notes organized into topic
-  folders, each with its own `Index.md`, plus a master `docs/Index.md`. Seeded by copying
-  seven existing notes (originals left untouched as a backup).
-- **`/src`** — the existing Jekyll + Chirpy blog, relocated from the repo root via `git mv`
-  so history is preserved (45 posts, CNAME, assets, theme config).
-
-Supporting changes:
-- Rewired both GitHub Pages workflows (`pages-build.yml`, `pages-deploy.yml`) to build from
-  `/src` (`working-directory: src`, artifact `path: src/_site...`) and to skip deploys for
-  `docs/**`-only changes.
-- Repointed the `.gitmodules` submodule path and root-anchored `.gitignore` patterns to `src/`.
-- Dropped stale `_config.yml` excludes that are now outside the Jekyll source.
-- Removed the already-migrated `Backup/` tree.
-- Rewrote `README.md` for the dual structure and the `/docs -> /src` promotion flow.
-- Documented the structure and a "write it down" note-capture rule in `.agent-brains/AGENT.md`,
-  and updated agent-brains plan/memory.
-
-Validated locally: `bundle install` + production `jekyll build` + `htmlproofer` all pass
-with 0 errors; CNAME is preserved in the built `_site`.
+Added a repeatable installer script, guide, and blog post for setting up `kubectl` and `kubecolor` on Debian/Ubuntu systems using `apt` and `.deb` packaging:
+- **`docs/linux/scripts/install-kubectl-kctl.sh`**: Installs `kubectl` via the official Kubernetes repository and `kubecolor` via the official release DEB package (verifying its SHA256 checksum). Creates a `kctl` symlink pointing to `kubecolor` for colorized output. Sets up tab completion for all commands.
+- **`docs/linux/install-kubectl-kctl.md`**: Guide explaining the installer script and manual step-by-step setup.
+- **`src/_posts/2026-06-28-debian-ubuntu-install-kubectl-kubecolor.md`**: Blog post promoting the setup guide.
+- Linked the guide in the Linux index and tracked it in agent-brains plan and memory structures.
 
 ## Why
-Make the repository serve both as a private working knowledge base and the public blog, with
-a clear promotion path from rough notes to published posts. no issue
+Make the setup and update of `kubectl` and `kubecolor` fully repeatable, utilizing the native `apt` package manager for clean dependency tracking and system integration, and alias `kubecolor` as `kctl` for faster typing.
 
 ## Breaking changes
-none -- the published site output and custom domain are unchanged; only the source layout and
-build working directory moved to `src/`.
+none
