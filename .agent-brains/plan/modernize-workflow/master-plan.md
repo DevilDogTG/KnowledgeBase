@@ -1,6 +1,6 @@
 ---
 task: modernize-workflow
-status: active
+status: done
 progress: 100
 branch: feat/modernize-workflow
 created: 2026-06-28
@@ -22,3 +22,4 @@ Establish `main` as the sole primary branch, configure GitHub Actions workflows,
 ## Progress Log
 - **2026-06-28:** Created modernization plan stub on the `feat/modernize-workflow` branch.
 - **2026-06-28:** Inspected all workflow files. Found and resolved double-dash escaping syntax errors in `.github/workflows/pages-deploy.yml`. Verified triggers and CodeQL setup.
+- **2026-06-28:** Rebased the branch onto `main` and ran the `finish-feature` flow. Prepared the PR body and marked all checklist items complete.
