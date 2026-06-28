@@ -5,6 +5,7 @@ _Generated 2026-06-28 from `plan/*.md` frontmatter. Edit the per-task plan files
 
 ## Active
 - [ ] [pr-body](pr-body.md)
+- [ ] [install-kubectl-kctl](install-kubectl-kctl/master-plan.md)
 
 ## Blocked
 _None._
