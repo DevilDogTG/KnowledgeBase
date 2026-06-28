@@ -4,6 +4,9 @@ Initial status.
 
 ## Recent Changes
 <!-- begin:changes -->
+### 2026-06-28 — Add kubectl and kctl installation script and guide
+Created an idempotent install and update script for `kubectl` and `kctl` on Debian/Ubuntu systems, featuring preflight checks, architecture detection, checksum validation, and automated shell auto-completion. Added a corresponding documentation guide under `docs/linux/install-kubectl-kctl.md` and linked it in the Linux topic index.
+
 ### 2026-06-28 — Modernize CI/CD workflows and fix deploy syntax
 Modernized the personal knowledge base workflows to target `main` as the sole primary branch. Fixed syntax errors in double-hyphen flags within `.github/workflows/pages-deploy.yml`.
 
