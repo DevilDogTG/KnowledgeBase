@@ -3,15 +3,15 @@
 # install-kubectl-kctl.sh
 # Idempotent installer/updater for kubectl, kubecolor, and kctl (symlink) on Debian/Ubuntu systems.
 # Performs preflight checks, architecture detection, checksum validation,
-# system-wide installation, and optional shell completion setup.
+# system-wide installation via APT/dpkg, and optional shell completion setup.
 #
 
 set -euo pipefail
 
 # Default variables
 TARGET_DIR="/usr/local/bin"
-KUBECTL_BIN="${TARGET_DIR}/kubectl"
-KUBECOLOR_BIN="${TARGET_DIR}/kubecolor"
+KUBECTL_BIN="/usr/bin/kubectl"
+KUBECOLOR_BIN="/usr/bin/kubecolor"
 KCTL_LINK="${TARGET_DIR}/kctl"
 FORCE=false
 DRY_RUN=false
@@ -38,7 +38,7 @@ show_help() {
   cat << EOF
 Usage: $(basename "$0") [options]
 
-Install or update 'kubectl', 'kubecolor', and 'kctl' (symlink to kubecolor) on Debian/Ubuntu.
+Install or update 'kubectl', 'kubecolor', and 'kctl' (symlink to kubecolor) on Debian/Ubuntu via APT.
 
 Options:
   -v, --version VERSION       Install a specific kubectl version (e.g., v1.30.0) instead of latest stable.
@@ -101,7 +101,7 @@ preflight_checks() {
   fi
 
   # Check required commands
-  for cmd in curl gpg grep cut sha256sum tar; do
+  for cmd in curl gpg grep cut sha256sum dpkg apt-get; do
     if ! command -v "$cmd" >/dev/null 2>&1; then
       log_err "Required command '$cmd' is not installed. Please install it first."
       exit 1
@@ -206,44 +206,63 @@ install_kubectl() {
     return
   fi
 
+  # Extract minor version (e.g. v1.36.2 -> v1.36)
+  local version_xy
+  version_xy=$(echo "$TARGET_KUBECTL_VERSION" | grep -oE '^v[0-9]+\.[0-9]+')
+  if [[ -z "$version_xy" ]]; then
+    log_err "Failed to extract minor version from $TARGET_KUBECTL_VERSION (e.g. v1.36)"
+    exit 1
+  fi
+
   if [[ "$DRY_RUN" = "true" ]]; then
-    log_info "[DRY-RUN] Would install kubectl version $TARGET_KUBECTL_VERSION to $KUBECTL_BIN"
+    log_info "[DRY-RUN] Would setup Kubernetes APT repository for version $version_xy"
+    log_info "[DRY-RUN] Would install kubectl via apt-get"
     return
   fi
 
-  log_info "Downloading kubectl binary..."
-  local bin_url="https://dl.k8s.io/release/${TARGET_KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl"
-  local sha_url="${bin_url}.sha256"
+  log_info "Setting up Kubernetes APT repository for version $version_xy..."
 
-  # Download binary and checksum
-  curl -L -sS -o "${TMP_DIR}/kubectl" "$bin_url"
-  curl -L -sS -o "${TMP_DIR}/kubectl.sha256" "$sha_url"
-
-  # Validate checksum
-  log_info "Verifying SHA256 checksum for kubectl..."
-  local expected_sha
-  expected_sha=$(cat "${TMP_DIR}/kubectl.sha256")
-  local actual_sha
-  actual_sha=$(sha256sum "${TMP_DIR}/kubectl" | cut -d' ' -f1)
-
-  if [[ "$expected_sha" != "$actual_sha" ]]; then
-    log_err "kubectl checksum verification failed!"
-    log_err "Expected: $expected_sha"
-    log_err "Actual:   $actual_sha"
-    exit 1
-  fi
-  log_info "kubectl checksum verification succeeded."
-
-  # Install binary
-  log_info "Installing kubectl binary to $KUBECTL_BIN..."
-  chmod +x "${TMP_DIR}/kubectl"
+  # Ensure keyrings directory exists
   if [[ $EUID -eq 0 ]]; then
-    mv "${TMP_DIR}/kubectl" "$KUBECTL_BIN"
+    mkdir -p -m 755 /etc/apt/keyrings
   else
-    sudo mv "${TMP_DIR}/kubectl" "$KUBECTL_BIN"
-    sudo chown root:root "$KUBECTL_BIN"
+    sudo mkdir -p -m 755 /etc/apt/keyrings
   fi
-  log_info "kubectl version $(kubectl version --client | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n1) installed successfully."
+
+  # Download signing key
+  local key_url="https://pkgs.k8s.io/core:/stable:/${version_xy}/deb/Release.key"
+  local keyring_file="/etc/apt/keyrings/kubernetes-apt-keyring.gpg"
+  
+  log_info "Downloading signing key from $key_url..."
+  if [[ $EUID -eq 0 ]]; then
+    curl -fsSL "$key_url" | gpg --dearmor --yes -o "$keyring_file"
+    chmod 644 "$keyring_file"
+  else
+    curl -fsSL "$key_url" | sudo gpg --dearmor --yes -o "$keyring_file"
+    sudo chmod 644 "$keyring_file"
+  fi
+
+  # Add repository sources file
+  local repo_line="deb [signed-by=$keyring_file] https://pkgs.k8s.io/core:/stable:/${version_xy}/deb/ /"
+  local sources_file="/etc/apt/sources.list.d/kubernetes.list"
+  log_info "Adding repository line to $sources_file..."
+  if [[ $EUID -eq 0 ]]; then
+    echo "$repo_line" > "$sources_file"
+  else
+    echo "$repo_line" | sudo tee "$sources_file" > /dev/null
+  fi
+
+  # Run apt-get update and install
+  log_info "Updating package lists and installing kubectl via APT..."
+  if [[ $EUID -eq 0 ]]; then
+    apt-get update
+    apt-get install -y kubectl
+  else
+    sudo apt-get update
+    sudo apt-get install -y kubectl
+  fi
+
+  log_info "kubectl version $(kubectl version --client 2>/dev/null | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n1) installed successfully via APT."
 }
 
 # 5. Perform Download and Installation of kubecolor
@@ -254,50 +273,45 @@ install_kubecolor() {
   fi
 
   if [[ "$DRY_RUN" = "true" ]]; then
-    log_info "[DRY-RUN] Would install kubecolor version $TARGET_KUBECOLOR_VERSION to $KUBECOLOR_BIN"
+    log_info "[DRY-RUN] Would download kubecolor deb package version $TARGET_KUBECOLOR_VERSION"
+    log_info "[DRY-RUN] Would install kubecolor via apt-get"
     return
   fi
 
-  log_info "Downloading kubecolor archive..."
   local kubecolor_no_v="${TARGET_KUBECOLOR_VERSION#v}"
-  local bin_url="https://github.com/kubecolor/kubecolor/releases/download/${TARGET_KUBECOLOR_VERSION}/kubecolor_${kubecolor_no_v}_linux_${ARCH}.tar.gz"
+  local deb_name="kubecolor_${kubecolor_no_v}_linux_${ARCH}.deb"
+  local bin_url="https://github.com/kubecolor/kubecolor/releases/download/${TARGET_KUBECOLOR_VERSION}/${deb_name}"
   local sha_url="https://github.com/kubecolor/kubecolor/releases/download/${TARGET_KUBECOLOR_VERSION}/checksums.txt"
 
-  # Download binary archive and checksums
-  curl -L -sS -o "${TMP_DIR}/kubecolor.tar.gz" "$bin_url"
+  log_info "Downloading kubecolor DEB package..."
+  curl -L -sS -o "${TMP_DIR}/${deb_name}" "$bin_url"
   curl -L -sS -o "${TMP_DIR}/checksums.txt" "$sha_url"
 
   # Validate checksum
-  log_info "Verifying SHA256 checksum for kubecolor..."
-  local tarball_name="kubecolor_${kubecolor_no_v}_linux_${ARCH}.tar.gz"
-  if ! grep -q "$tarball_name" "${TMP_DIR}/checksums.txt"; then
-    log_err "Tarball entry '$tarball_name' not found in checksums.txt."
+  log_info "Verifying SHA256 checksum for kubecolor DEB..."
+  if ! grep -q "$deb_name" "${TMP_DIR}/checksums.txt"; then
+    log_err "DEB package entry '$deb_name' not found in checksums.txt."
     exit 1
   fi
 
   # Extract matching line
-  grep "$tarball_name" "${TMP_DIR}/checksums.txt" > "${TMP_DIR}/kubecolor.sha256"
+  grep "$deb_name" "${TMP_DIR}/checksums.txt" > "${TMP_DIR}/kubecolor.sha256"
   
   if ! (cd "$TMP_DIR" && sha256sum --check --status kubecolor.sha256); then
-    log_err "kubecolor checksum verification failed for $tarball_name!"
+    log_err "kubecolor DEB checksum verification failed for $deb_name!"
     exit 1
   fi
-  log_info "kubecolor checksum verification succeeded."
+  log_info "kubecolor DEB checksum verification succeeded."
 
-  # Extract binary
-  log_info "Extracting kubecolor binary..."
-  tar -xzf "${TMP_DIR}/kubecolor.tar.gz" -C "$TMP_DIR" kubecolor
-
-  # Install binary
-  log_info "Installing kubecolor binary to $KUBECOLOR_BIN..."
-  chmod +x "${TMP_DIR}/kubecolor"
+  # Install package using apt-get (which handles dependencies and registers it cleanly)
+  log_info "Installing kubecolor DEB package via APT..."
   if [[ $EUID -eq 0 ]]; then
-    mv "${TMP_DIR}/kubecolor" "$KUBECOLOR_BIN"
+    apt-get install -y "${TMP_DIR}/${deb_name}"
   else
-    sudo mv "${TMP_DIR}/kubecolor" "$KUBECOLOR_BIN"
-    sudo chown root:root "$KUBECOLOR_BIN"
+    sudo apt-get install -y "${TMP_DIR}/${deb_name}"
   fi
-  log_info "kubecolor version $(kubecolor --kubecolor-version 2>/dev/null | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n1) installed successfully."
+
+  log_info "kubecolor version $(kubecolor --kubecolor-version 2>/dev/null | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n1) installed successfully via APT."
 }
 
 # 6. Create kctl symlink
@@ -322,6 +336,17 @@ create_symlink() {
       rm -f "$KCTL_LINK"
     else
       sudo rm -f "$KCTL_LINK"
+    fi
+  fi
+
+  # Create directories if they do not exist
+  local link_dir
+  link_dir=$(dirname "$KCTL_LINK")
+  if [[ ! -d "$link_dir" ]]; then
+    if [[ $EUID -eq 0 ]]; then
+      mkdir -p "$link_dir"
+    else
+      sudo mkdir -p "$link_dir"
     fi
   fi
 
