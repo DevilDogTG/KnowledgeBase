@@ -1,19 +1,6 @@
-<!-- generated: do not edit — run scripts/brains-index (.ps1|.sh). Source: plan/*.md frontmatter. See ADR-0002. -->
-# Project Roadmap
+<!-- agent-maintained: do not edit manually -->
+# Backlog
 
-_Generated 2026-06-29 from `plan/*.md` frontmatter. Edit the per-task plan files, not this file._
-
-## Active
-- [ ] [Plan Index](INDEX.md)
-
-## Blocked
-_None._
-
-## Deferred
-_None._
-
-## Done
-_None._
-
-## Archived
-_None._
+| Plan | Status | Progress | Branch | Updated |
+|------|--------|----------|--------|---------|
+| [windows-startup-errors](windows-startup-errors/master-plan.md) | active | 0% | bugfix/windows-startup-errors | 2026-06-29 |
