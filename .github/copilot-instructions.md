@@ -1,9 +1,13 @@
 <!-- begin:framework -->
 # Mandate: Centralized Brains (Copilot)
 1. Read the core rules from `~/.agent-brains/GLOBAL_AGENT.md`.
-2. Read the local project directives from `./.agent-brains/AGENT.md`.
-3. Use `./.agent-brains/memory/` for project context.
-4. Always write plans to `./.agent-brains/plan/` BEFORE writing code.
+2. This workspace's project is `DevilDogTG/KnowledgeBase` (derived from `git remote get-url origin` at
+   onboarding). Re-run the onboard script if the remote changes.
+3. Read the project directives from `~/.agent-brains/projects/DevilDogTG/KnowledgeBase/AGENT.md`.
+4. Use `~/.agent-brains/projects/DevilDogTG/KnowledgeBase/memory/` for project context.
+5. Always write plans to `~/.agent-brains/projects/DevilDogTG/KnowledgeBase/plan/` BEFORE writing code.
+
+No agent state belongs in this repo. Only these entry points and `docs/adr/` live here.
 
 
 ## Automatic Skill Routing
@@ -29,7 +33,7 @@ Rules:
 
 
 <!-- SKILLS:START -->
-<!-- Last updated: 2026-06-28 | Source: global + profile:base-developer + workspace -->
+<!-- Last updated: 2026-07-10 | Source: global + profile:base-developer + workspace -->
 
 ## Available Skills
 
@@ -108,6 +112,15 @@ Rules:
 5. GitLab repo (`gitlab-scm`)
 6. Summarize the chosen path
 
+### grill - Grill Before Designing
+**Invoke when:** Enforces the §3 "Grill before designing" rule: before proposing a design or writing code for a non-trivial or ambiguous request, interrogate the request until you and the user are demonstrably on the same page. The goal is **shared understanding**, not a fixed number of question rounds.
+**Steps:**
+1. Frame what you already understand.
+2. Probe until aligned — targeted questions, one dimension at a time.
+3. Exit criteria — stop grilling when EITHER:
+4. Restate and confirm.
+5. Record the outcome.
+
 ### onboard-audit - Onboard Audit
 **Invoke when:** Use this skill when you need to confirm a workspace has not drifted from the framework — for example after the framework has been updated, before a release, or when a workspace was onboarded long ago and its provider entry points may be stale. It complements `onboarding-checklist` (which validates a *fresh* onboarding) and `agent-validator` (which validates AGENT.md frontmatter): onboard-audit focuses on **drift detection** across the whole onboarded surface. This skill is **read-only**. It never edits, moves, or deletes files; it only reports. Remediation is always "re-run the onboard script" — which non-destructively refreshes the sentinel blocks while preserving user content. Frontmatter validation here is intentionally lightweight (no Python dependency); for deep frontmatter validation, delegate to the `agent-validator` skill.
 **Steps:**
@@ -117,10 +130,31 @@ Rules:
 4. Produce the dated report (see Template) summarising the run for the user.
 5. Recommend remediation — never auto-fix.
 
-### onboarding-checklist - Onboarding Checklist
-**Invoke when:** Use when the skill name matches the task.
+### onboarding-checklist - Onboarding Checklist
+**Invoke when:** Run this skill when a new contributor — human or agent — starts working in a project for the first time, or when setting up a development environment from scratch. It verifies that the workspace is correctly configured, secrets are not exposed, the framework is wired up, and the test suite is green before any real work begins. Invoke when the user says "set me up", "I'm new to this project", "bootstrap my environment", or when `session-start` detects no prior memory for this workspace.
 **Steps:**
-1. Read the skill file and execute its Procedure section.
+1. Resolve the project and verify its brain exists (Global §2):
+2. Read the project's `AGENT.md` (`~/.agent-brains/projects/<key>/AGENT.md`):
+3. Check for a provider entry point (e.g., `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`):
+4. Collect the merged skill set following the discovery load order (Global §2.1):
+5. Extract injection content for each skill:
+6. Locate the provider entry point file:
+7. Write or replace the skill registry block in the entry point file.
+8. Confirm with the user before writing:
+9. Re-run injection whenever skills change (new skill added, skill updated, active profile changed). The `session-end` skill surfaces this as a learning candidate when it detects skill file changes.
+10. Verify git is initialized:
+11. Check git identity:
+12. Check remote and SCM profile:
+13. Check branch:
+14. Scan for hardcoded secrets:
+15. Check `.gitignore`:
+16. Verify environment variables:
+17. Build the project:
+18. Run the test suite:
+19. Check the project's `memory/overview.md`:
+20. Check the project's `plan/backlog.md`:
+21. Produce a checklist summary showing pass / fail / skipped for each item.
+22. State clearly whether the workspace is ready for work, and list any outstanding items that must be resolved first.
 
 ### profile-initializer - Profile Initializer
 **Invoke when:** Use this skill when you need to create a new domain-specific profile (e.g., `python-developer`) in the global framework directory.
@@ -132,22 +166,33 @@ Rules:
 5. Validation: Verify that all files exist and the `AGENT.md` follows the established hierarchy.
 
 ### project-handover - project-handover
-**Invoke when:** Use when the skill name matches the task.
+**Invoke when:** Use this skill when concluding a significant work session or when preparing the workspace for a new agent to take over.
 **Steps:**
-1. Read the skill file and execute its Procedure section.
+1. State Audit:
+2. Synchronize Memory:
+3. Refine Backlog (generated — do not hand-edit `backlog.md`):
+4. Generate Handover Memo:
+5. Final Validation:
 
 ### project-initializer - project-initializer
 **Invoke when:** Use when the skill name matches the task.
 **Steps:**
-1. Read the skill file and execute its Procedure section.
+1. ### 1. Workspace Analysis - Scan root for tech stack and existing framework components. - If `.agent-brains/` still exists in the workspace, it predates ADR-0003. Run the `brains-migrate` skill (phase 3) **before** onboarding, or its contents will be stranded. ### 2. Run Onboard Script The canonical way to bootstrap is to run the onboard script from the Brains repo: - **Linux/macOS**: `bash <brains-repo>/src/scripts/onboard/onboard.sh` - **Windows**: `<brains-repo>\src\scripts\onboard\onboard.ps1` Provider entry points default to **Yes** on Enter. To skip one at invocation time, pass an opt-out flag such as `-ExM365`. Override the resolved project key with `ONBOARD_PROJECT_KEY=<key>`. This handles everything below automatically. The rest of this document describes what it does, for review or for when scripting is unavailable. ### 3. Profile Mapping - Match global profiles from `~/.agent-brains/profiles/`. - Default profile: `base-developer`. - **SCM profile:** the onboard script detects the git remote automatically: - No remote → `git-scm` - `github.com` remote → `github-scm` - `gitlab` remote → `gitlab-scm` - Unknown remote → `git-scm` + warning - **Language profiles:** the onboard script scans project files and adds matching profiles: | Signature found | Profile added | |---|---| | `*.csproj`, `*.sln`, `*.fsproj` | `csharp-developer` | | `*.psm1`, `*.psd1`, or root `*.ps1` | `powershell-script` | | `Chart.yaml`, `.helmignore`, `k8s/`, `kubernetes/` | `kubernetes-devops` | If none match, only `base-developer` is used. Users can add profiles manually. - **Profile order in AGENT.md:** `base-developer` → language profiles → `git-scm` → remote SCM profile. ### 4. Bootstrap the project AGENT.md File: `~/.agent-brains/projects/<project-key>/AGENT.md` ```markdown --- version: 1.0 profiles: - base-developer strict_override: false --- # Workspace Instructions
+
+### search-memory - Search Memory
+**Invoke when:** Recall across **every** project in the global brain, not just the one you are working in. `session-start` loads only the current project (Global §2), which keeps sessions cheap. This skill is the deliberate escape hatch for when the answer lives somewhere else. Typical trigger intent: - "did we solve this before?" - "have I hit this error in another repo?" - "where did I write down the decision about X?" - "what's active across all my projects?" → read `~/.agent-brains/projects/INDEX.md` instead; it is a generated board and costs one file read.
+**Steps:**
+1. Locate the script.
+2. Run it.
+3. Report findings with their source. Always cite `project → file:line`. A recalled memory reflects
 
 ### session-end - Session End
 **Invoke when:** Execute this skill at the close of every work session. It summarizes what happened, updates all plan and report files, extracts learnings worth persisting, prompts the user to promote valuable discoveries up the rule/memory/skill hierarchy, runs a git hygiene check, and produces a handover memo. This is the counterpart to `session-start`. Do not skip this skill when the user says "we're done for now", "continue later", or "close the session". Do not use this skill for recap-only requests like "summarize this session" or "what did we do?" — those belong to `session-summary`. If the user intends to **ship / merge / land** the current branch, use `finish-feature` instead. `session-end` closes the session state; it does not assume the feature is being merged now.
 **Steps:**
 1. Summarize the session in 3–7 bullet points:
-2. Update the active plan file (`./.agent-brains/plan/[task-name].md`):
-3. Regenerate `backlog.md` (do not hand-edit it — it is generated, Global §4.2.2):
-4. Check plan lifecycle:
+2. Update the active plan file (`$PLAN/master-plan.md`):
+3. Update the plan indexes — `INDEX.md` (full registry, all statuses) and `backlog.md` (active
+4. Check plan lifecycle (no-archive lifecycle — Global §4.5):
 5. Identify undocumented decisions:
 6. Extract learnings from the session:
 7. Verify the escalation target for each confirmed candidate before writing:
@@ -155,20 +200,21 @@ Rules:
 9. Suggest promotion for workspace-level items that may have broader value:
 10. Check git state:
 11. Update memory:
-12. Write the Handover Memo to `./.agent-brains/handover/[YYYY-MM-DD].md` using the template below.
-13. Commit the handover document (no confirmation needed — it is a framework artifact):
-14. Handle uncommitted workspace changes (from Phase 5):
+12. Write the Handover Memo to `~/.agent-brains/projects/<project-key>/handover/[YYYY-MM-DD].md` using the template below.
+13. Commit and push the brains repo (no confirmation needed — these are framework artifacts):
+14. Handle uncommitted workspace changes (from Phase 5) — this is a safety net, not the
 
 ### session-start - Session Start
-**Invoke when:** Execute this skill at the beginning of every work session before writing any code or making any changes. It loads project context, surfaces stale plans, and aligns with the user on the session's direction. This is the counterpart to `project-handover` — handover closes a session; session-start opens one. Typical trigger intent: - first user message in a new session - "start session" - "resume work" - "pick up where we left off"
+**Invoke when:** Execute this skill at the beginning of every work session before writing any code or making any changes. It resolves which **project** this workspace belongs to, loads that project's context, surfaces stale plans, and aligns with the user on the session's direction. This is the counterpart to `project-handover` — handover closes a session; session-start opens one. Typical trigger intent: - first user message in a new session - "start session" - "resume work" - "pick up where we left off"
 **Steps:**
-1. Report Loaded Context
-2. Load Memory
-3. Load Plans
-4. Surface Stale Plans
-5. Report Current State
-6. Confirm Session Direction
-7. Prepare the Active Plan
+1. Resolve the project (Global §2). Do this first — every later step reads from the project folder.
+2. Report Loaded Context
+3. Load Memory
+4. Load Plans
+5. Surface Stale Plans
+6. Report Current State
+7. Confirm Session Direction
+8. Prepare the Active Plan
 
 ### session-summary - Session Summary
 **Invoke when:** Use when the skill name matches the task.
@@ -193,11 +239,11 @@ Rules:
 1. Confirm the question with the user in one sentence:
 2. Set a timebox: agree on how deep to go before surfacing findings. Default: one session. Record it in the spike plan entry.
 3. Create a spike plan entry in `backlog.md`:
-4. Search the codebase first — existing implementations, related patterns, prior decisions in `.agent-brains/decisions/`.
+4. Search the codebase first — existing implementations, related patterns, prior decisions in the product repo's `docs/adr/`.
 5. Search external sources (docs, issues, benchmarks) as needed. Prefer primary sources (official docs, RFCs, source code) over blog posts.
 6. Keep a running scratchpad of raw findings as you go — don't synthesize yet. Note source for each finding.
 7. Stop at the timebox boundary even if the picture is incomplete. Incomplete findings with honest confidence levels are more useful than delayed perfect ones.
-8. Write the spike report to `./.agent-brains/memory/spikes/[slug].md` using the template below.
+8. Write the spike report to `~/.agent-brains/projects/<project-key>/memory/spikes/[slug].md` using the template below.
 9. Update `backlog.md`: mark the spike entry `[x]` and link the report file.
 10. Present the report summary to the user and ask:
 
