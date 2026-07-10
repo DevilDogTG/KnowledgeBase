@@ -1,9 +1,14 @@
 <!-- begin:framework -->
 # Mandate: Centralized Brains (Claude Code)
 1. Read the global framework rules from `~/.agent-brains/GLOBAL_AGENT.md`.
-2. Read the local workspace directives from `./.agent-brains/AGENT.md`.
-3. Use `./.agent-brains/memory/` for project context.
-4. Always write plans to `./.agent-brains/plan/` BEFORE writing code.
+2. Resolve this workspace's project key from `git remote get-url origin`: drop scheme, credentials
+   and host, strip a trailing `.git`. At onboarding this resolved to `DevilDogTG/KnowledgeBase`. If `origin`
+   has changed since, `origin` wins — re-run the onboard script.
+3. Read the workspace directives from `~/.agent-brains/projects/DevilDogTG/KnowledgeBase/AGENT.md`.
+4. Use `~/.agent-brains/projects/DevilDogTG/KnowledgeBase/memory/` for project context.
+5. Always write plans to `~/.agent-brains/projects/DevilDogTG/KnowledgeBase/plan/` BEFORE writing code.
+
+No agent state belongs in this repo. Only these entry points and `docs/adr/` live here.
 
 ## Agent-Brains Skill Invocation
 
@@ -11,7 +16,7 @@ When a user invokes a skill by name, resolve it using the [SK] entries in the se
 context banner — do NOT use the built-in Skill tool. Resolution paths:
 - [SK] global:<id>          -> `~/.agent-brains/skills/<id>/<id>.md`
 - [SK] profile(<name>):<id> -> `~/.agent-brains/profiles/<name>/skills/<id>/<id>.md`
-- [SK] workspace:<id>       -> `./.agent-brains/skills/<id>/<id>.md`
+- [SK] workspace:<id>       -> `~/.agent-brains/projects/DevilDogTG/KnowledgeBase/skills/<id>/<id>.md`
 
 Read the file and execute its Procedure section. Innermost level wins on ID collision
 (workspace > profile > global).
